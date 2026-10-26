@@ -2,7 +2,7 @@
   'use strict';
   var video = document.getElementById('julie-approved-film');
   if (!video) return;
-  var source = 'assets/julie-approved-4k/master.m3u8';
+  var source = 'https://longevitylifeacademy.pages.dev/assets/julie-approved-4k/master.m3u8';
   function play() {
     var promise = video.play();
     if (promise && promise.catch) promise.catch(function () {});
