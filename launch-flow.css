@@ -8,6 +8,9 @@ html.guest-form-focused body#lpRoot #mockBar,html.guest-form-visible body#lpRoot
 #heroCouponNote{font:500 15px/1.6 Inter,sans-serif!important;color:#c9dcf8!important;margin:16px 0 0!important;max-width:480px}
 #hero .lla-tp{display:flex!important;flex-wrap:wrap!important;align-items:center!important;gap:10px 14px!important}
 #hero .lla-tp-text{display:inline!important;font:500 15px/1.5 Inter,sans-serif!important;color:#dceaff!important}
+html body#lpRoot #hero h1{font-size:clamp(46px,4.2vw,68px)!important;line-height:1.04!important}
+html body#lpRoot #hero .pdp-cine-sub{font-size:22px!important;line-height:1.4!important}
+@media(max-width:600px){html body#lpRoot #hero h1{font-size:38px!important;line-height:1.08!important}html body#lpRoot #hero .pdp-cine-sub{font-size:19px!important;line-height:1.5!important}}
 html body#lpRoot #mockBar a{font-style:normal!important}
 html body#lpRoot #et-bumpyard-widget{bottom:calc(86px + env(safe-area-inset-bottom))!important}
 @media(max-width:600px){html body#lpRoot #mockBar .l i{display:none!important}#heroCouponNote{font-size:15px!important}html body#lpRoot #mockBar{gap:10px!important;padding-left:16px!important;padding-right:16px!important}}
