@@ -19,8 +19,8 @@
    style.textContent=rules.map(m=>m[1].replaceAll('#enrollModal','#ask')+'{'+m[2]+'}\n'+m[1].replaceAll('#enrollModal','.attendee-coupon')+'{'+m[2]+'}').join('\n')+'\n.attendee-coupon button[data-coupon]{color:inherit}html{scroll-padding-top:130px}';
    document.head.append(style);
   }
-  html('#hero h1','The Longevity <span class="pdp-cine-blue">Blueprint</span>');
-  html('#hero .pdp-cine-sub','Master the six pillars of longevity through <strong>18 live classes</strong>, practical exercises and your own health data.');
+  html('#hero h1','Build your personal longevity protocol in <span class="pdp-cine-blue">18 live classes.</span>');
+  html('#hero .pdp-cine-sub','18 live small-group classes with Julie and the LLA faculty. Abbott Lingo CGM shipped free. You leave with a written protocol built on your own numbers.');
   text('#hero figcaption span','Founding Faculty, Longevity Life Academy');
   const heroCTA=document.querySelector('#hero .pdp-cine-cta');if(heroCTA){heroCTA.href='#offer';heroCTA.dataset.enrollCourse='1';heroCTA.innerHTML='Enroll now';}
   document.querySelectorAll('#learn-com .topic-v2-desc').forEach((p,i)=>{if(descriptions[i])p.textContent=descriptions[i]});
