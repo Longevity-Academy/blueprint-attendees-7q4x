@@ -980,7 +980,7 @@ async function initAirwallex(){
      * after the gateway confirms the payment. */
 
     /* CRM NumOfPayments counts REMAINING installments after today's payment. */
-    var LIST_PER_MONTH = Number(amount)===79 || Number(amount)===169 ? 169 : 179;
+    var LIST_PER_MONTH = [79,169,799].includes(Number(amount)) ? 169 : 179;
     var LIST_TOTAL     = LIST_PER_MONTH * 5;
     var strike = function(txt){ return '<s style="opacity:.5;font-weight:500;margin-right:6px">' + txt + '</s>'; };
     // The verified order, not a stale plan in this browser, controls payment

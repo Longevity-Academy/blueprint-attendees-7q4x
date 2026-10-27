@@ -52,7 +52,7 @@
  function schedule(){if(!pending){pending=true;setTimeout(render,20)}}
  const root=$('#enrollModal')||document.body;
  if(root)new MutationObserver(schedule).observe(root,{childList:true,subtree:true,characterData:true});
- document.addEventListener('click',e=>{
+ window.addEventListener('click',e=>{
   const code=e.target.closest('[data-credit-code]');if(!code)return;
   e.preventDefault();e.stopImmediatePropagation();
   const v=code.dataset.creditCode,field=$('#codeInput')||$('#attCodeInput');
