@@ -11,18 +11,16 @@
     if(!code){say('Type the code from the chat, or the one in your VIP email.',1);inp.focus();document.getElementById('offer').scrollIntoView({behavior:'smooth',block:'center'});return}
     if(!CODES[code]){say('That code is not valid. Use the code Courtney shared in the Zoom chat, or the one in your VIP email.',1);inp.classList.remove('ok');document.getElementById('offer').scrollIntoView({behavior:'smooth',block:'center'});return}
     if(Date.now()>Date.parse('2026-10-28T23:59:59-04:00')){say('The attendee offer window has ended. Please ask our team about the current course offer.',1);return}
-    inp.classList.add('ok');say('Code '+code+' selected for your callback request.');
+    inp.classList.add('ok');say('Code '+code+' applied. Opening secure enrollment.');
     try{sessionStorage.setItem('lla_promo_code',code)}catch(e){}
-    var question=document.querySelector('#askForm [name="question"]');
-    if(question&&!question.value.trim())question.value='I would like to enroll in the Longevity Blueprint with code '+code+'. Please call me about available start dates and the next steps.';
-    document.getElementById('ask').scrollIntoView({behavior:'smooth',block:'start'});
-    document.querySelector('#askForm [name="firstName"]').focus({preventScroll:true});
-    var status=document.getElementById('askMsg');status.className='formmsg';status.textContent='Code '+code+' selected. Add your details below and our enrollment team will help you register.';
+    var enrollment=new URL('blueprint/',location.href);
+    enrollment.search=location.search;enrollment.searchParams.set('code',code);enrollment.searchParams.set('plan','monthly');enrollment.searchParams.set('enroll','1');
+    location.assign(enrollment.href);
   }
   btn.addEventListener('click',go);inp.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();go()}});
   var more=document.querySelectorAll('.js-apply');for(var k=0;k<more.length;k++)more[k].addEventListener('click',go);
   document.querySelectorAll('[data-coupon]').forEach(function(el){el.addEventListener('click',function(){var code=el.getAttribute('data-coupon');inp.value=code;inp.classList.add('ok');say('Code '+code+' selected. Apply it when you are ready.');if(el.tagName==='BUTTON')inp.focus()})});
-  try{var q=new URLSearchParams(location.search).get('code');if(q&&CODES[q.trim().toUpperCase()]){inp.value=q.trim().toUpperCase();inp.classList.add('ok');say('Code '+inp.value+' selected. Press Apply code to include it in your callback request.')}}catch(e){}
+  try{var q=new URLSearchParams(location.search).get('code');if(q&&CODES[q.trim().toUpperCase()]){inp.value=q.trim().toUpperCase();inp.classList.add('ok');say('Code '+inp.value+' selected. Apply it to continue to enrollment.')}}catch(e){}
 
   /* Question form: proven website lead path (CRM AddNewLead through the proxy). ?env=staging for tests. */
   var f=document.getElementById('askForm');

@@ -31,7 +31,8 @@
   text('#offer .lp-lead','18 live classes, learning-platform access, Julie’s VIP masterclass and one Abbott Lingo sensor with U.S. shipping.');
   text('#offer .lp-big b','149');text('#offer .lp-saverow s','$179 / mo');
   text('#offer .lp-pill','Save $30 per payment');
-  html('#offer .lp-total','Five payments, <b>$745 total</b>. Select your code and request enrollment assistance. No payment is taken on this page.');
+  html('#offer .lp-total','Five payments, <b>$745 total</b>. Apply your code to continue to secure enrollment.');
+  text('#codeApply','Apply code and enroll');
   text('#offer .lp-julie-t b','Masterclass attendee code');
   html('#offer .lp-trust','<b>Full refund within 14 days of registration.</b> Questions? Call +1-888-230-5110.');
   html('#syllabus h2','The 18-class <em>syllabus</em>');

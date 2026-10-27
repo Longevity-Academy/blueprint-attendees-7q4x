@@ -15,6 +15,9 @@
  *   POST {worker}/leads/{env} -> {CRM}/Students/AddNewLead
  */
 (function(){
+var BLUEPRINT_CLASSES = [{"courseId":170275,"semesterId":2395,"start":"2026-11-23","sourceTimestamp":"2026-11-23T21:00:00","sourceOffset":-4,"day":"23","mon":"Nov","month":"November","wd":"Mon","et":"8:00 PM","ct":"7:00 PM","pt":"5:00 PM"},{"courseId":170277,"semesterId":2395,"start":"2026-11-25","sourceTimestamp":"2026-11-25T13:00:00","sourceOffset":-4,"day":"25","mon":"Nov","month":"November","wd":"Wed","et":"12:00 PM","ct":"11:00 AM","pt":"9:00 AM"}];
+  function selectedBlueprintClass(text){text=String(text||'');return BLUEPRINT_CLASSES.find(function(c){return text.indexOf(c.start)!==-1||new RegExp(c.mon+'[ ]*'+c.day,'i').test(text)})||null;}
+
   var CFG = window.LLA_ECOMM_CONFIG = window.LLA_ECOMM_CONFIG || {};
   CFG.workerBase = CFG.workerBase || 'https://eteacher-leads-proxy.gitter-omri.workers.dev';
   CFG.env = CFG.env || 'production';          // 'staging' | 'production'
@@ -278,12 +281,11 @@
       // admin-form field names (select#PrefferdCourseID / select#ActivitySessionLevel1ID), so the buyer is assigned.
       // From GetECommerceFirstPaymentDetails.AvailableClasses (course 258 / 1774, semester 2273 "2026-10 - Longevity"):
       //   Mon Oct 12 8:00 PM ET -> CourseID 168662 ; Wed Oct 14 11:00 AM ET -> CourseID 168663
-      var bpStart = String(fields.startDate || '');
-      var bpClass = /Oct\s*12|2026-10-12/i.test(bpStart) ? 168662 : 168663;
-      payload.PrefferdCourseID        = bpClass;
-      payload.PreferredCourseId       = bpClass;
-      payload.ActivitySessionLevel1ID = 2273;
-      payload.SemesterID              = 2273;
+      var selected = selectedBlueprintClass(fields.startDate);
+      payload.PrefferdCourseID = selected ? selected.courseId : 0;
+      payload.PreferredCourseId = selected ? selected.courseId : 0;
+      payload.ActivitySessionLevel1ID = selected ? selected.semesterId : 0;
+      payload.SemesterID = selected ? selected.semesterId : 0;
       payload.AbroadCourseId     = crs.abroadCourseId     != null ? crs.abroadCourseId     : 1774;
       payload.LanguageId         = crs.languageId         != null ? crs.languageId         : 1;
       payload.IsTrial            = crs.isTrial            != null ? crs.isTrial            : 0; // 0 = NoTrial (full-price order), 1 = Trial
@@ -457,6 +459,7 @@
         var orderid = bb.orderid || bb.OrderId || bb.orderId || bb.OrderID || '';
         if (r.ok && stid && orderid) {
           var out = { stid: String(stid), orderid: String(orderid), env: CFG.env };
+          try{sessionStorage.setItem('lla_selected_class_v1',JSON.stringify({orderid:String(orderid),env:CFG.env,courseId:pending.payload.PreferredCourseId,semesterId:pending.payload.SemesterID}))}catch(e){}
           rememberOrderQuote(stid, orderid, pending.payload);
           try { sessionStorage.setItem('lla_ecomm_ids', JSON.stringify({ stid: out.stid, orderid: out.orderid, env: CFG.env, ts: Date.now() })); } catch(e){}
           try { sessionStorage.removeItem(PENDING_KEY); } catch(e){}
@@ -508,11 +511,7 @@
       return postWithRetry(base + prefix + '/api/checkout/details', { studentId: String(ids.stid), orderId: String(ids.orderid) })
         .then(function(r){ return r.ok ? r.body : null; });
     },
-    classForStart: function(startText){
-      // 2026-09-24 VP Operations: class of the buyer's chosen start date (CRM AvailableClasses, course 258/1774, semester 2273).
-      var oct12 = /Oct\s*12|2026-10-12/i.test(String(startText || ''));
-      return { courseId: oct12 ? 168662 : 168663, semesterId: 2273 };
-    },
+    classForStart: function(startText){ return selectedBlueprintClass(startText); },
     reportPayment: function(report){
       // NEVER include raw card data (Pan/CardNumber/Cvv/Cvc/SecurityCode) — worker rejects it.
       if (CFG.mode !== 'ecomm') return Promise.resolve({ ok: false, error: 'ecomm_mode_off' });
@@ -525,6 +524,8 @@
           var sd = ''; try { sd = sessionStorage.getItem('lla_start_date') || ''; } catch(e) {}
           if (!sd) sd = ((document.getElementById('emDate') || {}).value) || '';
           var cls = window.LLA_ECOMM.classForStart(sd);
+          if(!cls){try{var saved=JSON.parse(sessionStorage.getItem('lla_selected_class_v1')||'null');if(saved&&String(saved.orderid)===String(report.OrderId)&&saved.env===CFG.env&&saved.courseId)cls=saved}catch(e){}}
+          if(!cls)throw new Error('CLASS_SELECTION_REQUIRED');
           report.PreferredCourseId = String(cls.courseId);
           report.PrefferdCourseID = String(cls.courseId);
           report.ActivitySessionLevel1ID = String(cls.semesterId);

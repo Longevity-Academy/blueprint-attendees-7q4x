@@ -8261,7 +8261,7 @@ window.LLA_GOOGLE_CAMPAIGN_IDS = window.LLA_GOOGLE_CAMPAIGN_IDS || {
   window.LLA_ECOMM_CONFIG.workerBase = 'https://eteacher-leads-proxy.gitter-omri.workers.dev';
 </script>
 <script src="assets/lla-promo.js?v=r17" defer></script>
-<script src="assets/eteacher-ecomm.js?v=20260924-class2" defer></script>
+<script src="assets/eteacher-ecomm.js?v=guest-flow-20261027b" defer></script>
 <script src="assets/ecom-layer.js?v=r13" defer></script>
 
 
@@ -8352,8 +8352,8 @@ window.LLA_GOOGLE_CAMPAIGN_IDS = window.LLA_GOOGLE_CAMPAIGN_IDS || {
       </div>
       <select class="em-in dp-native" id="emDate" required tabindex="-1" aria-hidden="true">
         <option value="" disabled selected>Select a starting date</option>
-          <option value="Mon Oct 12, 2026 · 8:00 PM ET · 7:00 PM CT · 5:00 PM PT · weekly (CRM: Tue 03:00 IL)" data-start="2026-10-12" data-month="October" data-wd="Mon" data-day="12" data-mon="Oct" data-et="8:00 PM" data-ct="7:00 PM" data-pt="5:00 PM">Mon Oct 12 · 8:00 PM (ET)</option>
-          <option value="Wed Oct 14, 2026 · 11:00 AM ET · 10:00 AM CT · 8:00 AM PT · weekly (CRM: Wed 18:00 IL)" data-start="2026-10-14" data-month="October" data-wd="Wed" data-day="14" data-mon="Oct" data-et="11:00 AM" data-ct="10:00 AM" data-pt="8:00 AM">Wed Oct 14 · 11:00 AM (ET)</option>
+          <option value="Mon Nov 23, 2026 · 8:00 PM ET · 7:00 PM CT · 5:00 PM PT · weekly (2026-11-23)" data-start="2026-11-23" data-course-id="170275" data-semester-id="2395" data-month="November" data-wd="Mon" data-day="23" data-mon="Nov" data-et="8:00 PM" data-ct="7:00 PM" data-pt="5:00 PM">Mon Nov 23 · 8:00 PM ET</option>
+<option value="Wed Nov 25, 2026 · 12:00 PM ET · 11:00 AM CT · 9:00 AM PT · weekly (2026-11-25)" data-start="2026-11-25" data-course-id="170277" data-semester-id="2395" data-month="November" data-wd="Wed" data-day="25" data-mon="Nov" data-et="12:00 PM" data-ct="11:00 AM" data-pt="9:00 AM">Wed Nov 25 · 12:00 PM ET</option>
       </select>
       <script>
       (function(){try{
@@ -8564,7 +8564,7 @@ window.LLA_GOOGLE_CAMPAIGN_IDS = window.LLA_GOOGLE_CAMPAIGN_IDS || {
     emErrClear();
     var _dateSelect=document.getElementById('emDate'),_dateOption=_dateSelect&&_dateSelect.options[_dateSelect.selectedIndex];
     var _sd=(_dateSelect||{}).value||'';
-    if(!_sd||!_dateOption||_dateOption.disabled||['2026-10-12','2026-10-14'].indexOf(_dateOption.getAttribute('data-start'))<0){ emErr('Please choose an available October class time.'); return; }
+    if(!_sd||!_dateOption||_dateOption.disabled||!window.LLA_ECOMM.classForStart(_dateOption.getAttribute('data-start'))){ emErr('Please choose an available class time.'); return; }
     try{ sessionStorage.setItem('lla_start_date', _sd); }catch(e){}
     var fields=collectFields();
     var _unused={
@@ -8602,9 +8602,11 @@ window.LLA_GOOGLE_CAMPAIGN_IDS = window.LLA_GOOGLE_CAMPAIGN_IDS || {
          Meta events unchanged. */
       if(window.__llaLeadNow!==2){
         window.__llaLeadNow=1; btn.disabled=true; btn.textContent='Please wait\u2026';
-        var _done=false, _go=function(){ if(_done) return; _done=true; window.__llaLeadNow=2; proceed(); };
-        var _t=setTimeout(_go,7000);
-        try{ window.LLA_ECOMM.createStagedOrder().then(function(){ clearTimeout(_t); _go(); }).catch(function(){ clearTimeout(_t); _go(); }); }catch(e){ clearTimeout(_t); _go(); }
+        var _done=false;
+        window.LLA_ECOMM.createStagedOrder().then(function(ids){
+          if(!ids||!ids.stid||!ids.orderid)throw new Error('ORDER_NOT_CONFIRMED');
+          if(_done)return;_done=true;window.__llaLeadNow=2;proceed();
+        }).catch(function(){window.__llaLeadNow=0;btn.disabled=false;btn.textContent='Continue';emErr('We could not confirm your enrollment request. Please contact our team before retrying.');});
         return;
       }
       proceed();

@@ -321,7 +321,7 @@ window.LLA_META=(function(){
       var id='lla_'+name.toLowerCase()+'_'+Date.now()+'_'+Math.random().toString(36).slice(2,8);
       if(name==='Purchase'){
         if(!data || !data.order_id || !data.payment_id)return;
-        id='lla_purchase_'+String(data.order_id)+'_'+String(data.payment_id);
+        id=String(data.order_id);
         try{
           localStorage.setItem(id,'attempted');
         }catch(e){}
@@ -676,7 +676,7 @@ html.lla-vip-eligible .lla-vip-ck{display:grid!important}
 </script>
 <script src="https://checkout.airwallex.com/assets/elements.bundle.min.js?version=1.160.0"></script>
 <script src="assets/lla-promo.js?v=r17"></script>
-<script src="assets/eteacher-ecomm.js?v=guest-e2e-20261027"></script>
+<script src="assets/eteacher-ecomm.js?v=guest-flow-20261027b"></script>
 <script>
 document.querySelectorAll('.pay-tab').forEach(function(t){
   t.addEventListener('click',function(){
