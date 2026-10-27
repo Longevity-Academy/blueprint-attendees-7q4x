@@ -23,7 +23,7 @@
     if(!$('#offer .masterclass-credit-strip'))totalEl.insertAdjacentHTML('afterend','<div class="masterclass-credit-strip" data-no-promo><strong>Masterclass credit</strong><div class="credit-codes"><button type="button" data-credit-code="JULIE249">JULIE249</button><button type="button" data-credit-code="MASTERCLASS-VIP">MASTERCLASS-VIP</button></div></div>');
    }
    text('#codeApply','Apply code & enroll');
-   html('#offer .lp-lead','18 live classes, your learning platform, Julie’s masterclass and an Abbott Lingo sensor.');
+   all('#offer .lp-lead').forEach(e=>e.remove());
    all('#faq .faq-item').forEach(e=>{if(/How much does it cost/i.test(e.querySelector('.faq-q')?.textContent||'')){const a=e.querySelector('.faq-a-inner');const t='Regular plan: five payments of $169, $845 total. Apply JULIE249 or MASTERCLASS-VIP for a $90 masterclass credit: $79 in month 1, then four monthly payments of $169. Total: $755.';if(a&&a.textContent!==t)a.textContent=t}});
    html('.att-price','<span class="att-big">$79</span><span class="att-unit">Month 1<br><s>$169</s></span>');
    html('.att-line','Then 4 monthly payments of $169. <b>$755 total.</b> Masterclass credit applied to month 1.');
