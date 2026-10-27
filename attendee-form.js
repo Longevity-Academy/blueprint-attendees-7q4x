@@ -1,11 +1,10 @@
 
 (function(){
-  if(!window.LLA_US){var phoneScript=document.createElement('script');phoneScript.src='blueprint/assets/nanp-state-autofill.js?v=guest-qa1';document.head.append(phoneScript)}
+  if(!window.LLA_US){var phoneScript=document.createElement('script');phoneScript.src=new URL('blueprint/assets/nanp-state-autofill.js?v=guest-qa1',document.currentScript.src).href;document.head.append(phoneScript)}
   if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.querySelectorAll('video[aria-hidden="true"]').forEach(function(v){v.removeAttribute('autoplay');v.pause()})}
-  /* Lead-generation flow: selected code accompanies the callback request.
-     Do not send attendees into the existing checkout until a valid future CRM cohort is confirmed. */
+  /* Selected code accompanies the callback request and the confirmed enrollment route. */
   var CODES={'JULIE249':1,'MASTERCLASS-VIP':1};
-  var inp=document.getElementById('codeInput'),btn=document.getElementById('codeApply'),msg=document.getElementById('codeMsg');
+  var inp=document.getElementById('codeInput')||document.getElementById('attCodeInput'),btn=document.getElementById('codeApply'),msg=document.getElementById('codeMsg');
   function say(t,e){msg.textContent=t;msg.className='codemsg'+(e?' err':'')}
   function go(){var code=(inp.value||'').trim().toUpperCase().replace(/\s+/g,'');
     if(!code){say('Type the code from the chat, or the one in your VIP email.',1);inp.focus();document.getElementById('offer').scrollIntoView({behavior:'smooth',block:'center'});return}
@@ -17,19 +16,21 @@
     enrollment.search=location.search;enrollment.searchParams.set('code',code);enrollment.searchParams.set('plan','monthly');enrollment.searchParams.set('enroll','1');
     location.assign(enrollment.href);
   }
+  if(btn&&inp){
   btn.addEventListener('click',go);inp.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();go()}});
   var more=document.querySelectorAll('.js-apply');for(var k=0;k<more.length;k++)more[k].addEventListener('click',go);
   document.querySelectorAll('[data-coupon]').forEach(function(el){el.addEventListener('click',function(){var code=el.getAttribute('data-coupon');inp.value=code;inp.classList.add('ok');say('Code '+code+' selected. Apply it when you are ready.');if(el.tagName==='BUTTON')inp.focus()})});
   try{var q=new URLSearchParams(location.search).get('code');if(q&&CODES[q.trim().toUpperCase()]){inp.value=q.trim().toUpperCase();inp.classList.add('ok');say('Code '+inp.value+' selected. Apply it to continue to enrollment.')}}catch(e){}
+  }
 
   /* Question form: proven website lead path (CRM AddNewLead through the proxy). ?env=staging for tests. */
-  var f=document.getElementById('askForm');
+  var f=document.getElementById('askForm')||document.getElementById('attAskForm');
   if(f){var params=new URLSearchParams(location.search),explicitEnv=(params.get('env')||'').toLowerCase();
     var qa=params.get('qa')==='1'||params.get('llatest')==='1';
     var env=explicitEnv==='staging'||(qa&&explicitEnv!=='production')?'staging':'production';
     var submitting=false;
     var W='https://eteacher-leads-proxy.gitter-omri.workers.dev';
-    f.addEventListener('submit',function(e){e.preventDefault();if(submitting)return;var fd=new FormData(f),out=document.getElementById('askMsg'),b=document.getElementById('askBtn');
+    f.addEventListener('submit',function(e){e.preventDefault();if(submitting)return;var fd=new FormData(f),out=document.getElementById('askMsg')||document.getElementById('attAskMsg'),b=document.getElementById('askBtn')||document.getElementById('attAskBtn');
       function s(t,er){out.textContent=t;out.className='formmsg'+(er?' err':'')}
       if(fd.get('website')){s('Sent.');return}
       var fn=(fd.get('firstName')||'').trim(),ln=(fd.get('lastName')||'').trim(),em=(fd.get('email')||'').trim(),ph=(fd.get('phone')||'').trim(),qq=(fd.get('question')||'').trim();
@@ -44,7 +45,7 @@
       var incomingCid=attribution.get('cid');attribution.delete('cid');attribution.set('cid',/^\d+$/.test(incomingCid||'')?incomingCid:'116641');attribution.set('src','masterclass-attendees');
       var payload={ProductID:26,FirstName:fn,LastName:ln,Email:em,MobilePhone:e164,CountryIsoCode:'US',CountryIsoCodeByIp:'US',State:state,StateProvinceRegion:state,LandingPage:location.href.split('#')[0],UserAgent:navigator.userAgent,ReferringSite:document.referrer||'',QueryString:attribution.toString(),AdminNotes:('MASTERCLASS ATTENDEE QUESTION (Julie Gibson Clark masterclass). Please call back and answer: '+qq).slice(0,4000)};
       var selectedCode=(inp.value||'').trim().toUpperCase().replace(/\s+/g,'');
-      payload.AdminNotes+= '\nCallback preference: '+fd.get('callbackTime')+'; time zone: '+fd.get('timeZone')+'. Contact consent: yes. Coupon: '+(CODES[selectedCode]?selectedCode:'not selected')+'.';
+      payload.AdminNotes+= '\nCallback preference: '+(fd.get('callbackTime')||'Any time')+'; time zone: '+(fd.get('timeZone')||'Not specified')+'. Contact consent: yes. Coupon: '+(CODES[selectedCode]?selectedCode:'not selected')+'.';
       submitting=true;b.disabled=true;b.textContent='Sending';s('');
       fetch(W+'/leads/'+env,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}).then(async function(r){
         var raw=await r.text(),data;try{data=JSON.parse(raw)}catch(e){data=null}

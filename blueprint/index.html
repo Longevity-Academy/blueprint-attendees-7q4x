@@ -6244,6 +6244,7 @@ header.co-head .logo img {
 <link rel="stylesheet" href="assets/r15-sheet.css?v=1">
 <link rel="stylesheet" href="assets/r15-hero.css?v=20260923-hero-frame">
 <link rel="stylesheet" href="assets/r15-folds.css?v=1">
+<link rel="stylesheet" href="../guest-mobile.css?v=20261027-mobile1">
 </head>
 <body id="lpRoot">
 <!-- Google Tag Manager (noscript) -->
@@ -7319,6 +7320,7 @@ var vids=r.querySelectorAll('video');if('IntersectionObserver' in window){var io
       </div>
       <label>Your question for Julie or the LLA team<textarea name="question" rows="4" maxlength="1500" required placeholder="What did you want to ask?"></textarea></label>
       <input type="text" name="website" class="att-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <label class="guest-contact-consent"><input type="checkbox" name="contactConsent" required> I agree that the enrollment team may contact me by phone or email about my question and the course.</label>
       <button class="att-btn att-btn-wide" type="submit" id="attAskBtn">Send my question</button>
       <p class="att-msg" id="attAskMsg" role="status" aria-live="polite"></p>
       <p class="att-privacy">We use your details only to answer your question and call you back. <a href="privacy.html">Privacy</a>.</p>
@@ -9743,7 +9745,7 @@ html body .att-privacy a{color:#5b6778;text-decoration:underline}
   setTimeout(reflect, 300); setTimeout(reflect, 1200);
 
   /* Questions form -> proven website lead path (CRM AddNewLead via proxy). Staging when ?env=staging. */
-  var f=document.getElementById('attAskForm');
+  var f=null; /* The shared receipt-validated attendee-form.js owns this form. */
   if(f){
     var env=(new URLSearchParams(location.search).get('env')||'production').toLowerCase(); if(env!=='staging') env='production';
     var WORKER='https://eteacher-leads-proxy.gitter-omri.workers.dev';
@@ -9774,5 +9776,7 @@ html body .att-privacy a{color:#5b6778;text-decoration:underline}
   }
 })();
 </script>
+<script src="../attendee-form.js?v=20261027-mobile1"></script>
+<script src="../guest-mobile.js?v=20261027-mobile1"></script>
 </body>
 </html>

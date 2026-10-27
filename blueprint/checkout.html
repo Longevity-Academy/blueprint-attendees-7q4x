@@ -480,7 +480,7 @@ header.co-head .logo img {
 /* Show the bonus only after CRM confirms the promo order. */
 .lla-vip-ck{display:none!important}
 html.lla-vip-eligible .lla-vip-ck{display:grid!important}
-</style></head>
+</style><link rel="stylesheet" href="../guest-mobile.css?v=20261027-mobile1"></head>
 <body>
 
 <header class="co-head">
@@ -556,7 +556,6 @@ html.lla-vip-eligible .lla-vip-ck{display:grid!important}
             <img src="assets/pay/visa.svg" alt="Visa" />
             <img src="assets/pay/mastercard.svg" alt="Mastercard" />
             <img src="assets/pay/amex.svg" alt="American Express" />
-            <img src="assets/pay/google-pay-mark.svg" alt="Google Pay" class="gpay-mark" />
           </div>
           <div class="pay-tab" data-tab="paypal">
             <img class="pp" src="assets/pay/paypal.svg" alt="PayPal" />
@@ -990,6 +989,14 @@ async function initAirwallex(){
     var rows = document.querySelectorAll('.sum-row');
     var vs   = document.querySelectorAll('.sum-row .v');
     var ks   = document.querySelectorAll('.sum-row .k');
+    vs.forEach(function(el){el.setAttribute('data-no-promo','');});
+    var verifiedBand=document.getElementById('heroTuition');
+    if(verifiedBand){
+      verifiedBand.setAttribute('data-no-promo','');
+      document.getElementById('heroTuitionVal').textContent='$'+Number(amount).toFixed(2)+(Number(expectedQuote.leftToPay)===0?' one payment':' today');
+      document.getElementById('heroTuitionSub').textContent='$'+Number(expectedQuote.total).toFixed(2)+' total'+
+        (Number(expectedQuote.leftToPay)===0?'':'; then '+Number(expectedQuote.numberOfPayments)+' monthly payments of $'+Number(expectedQuote.paymentPerMonth).toFixed(2));
+    }
     var num  = Number(d.NumOfPayments);
     document.documentElement.classList.toggle('lla-vip-eligible',
       !!(window.LLA_PROMO && window.LLA_PROMO.active && plan === 'monthly' && num === 4 && Number(amount) === 149 && _cur === 'USD'));
@@ -1043,8 +1050,8 @@ async function initAirwallex(){
       intent_id: intentId,
       client_secret: clientSecret,
       currency: 'USD',
-      mode: plan === 'upfront' || num === 0 ? 'payment' : 'recurring',
-      recurringOptions: plan === 'upfront' || num === 0 ? undefined : {
+      mode: plan === 'upfront' || num <= 1 ? 'payment' : 'recurring',
+      recurringOptions: plan === 'upfront' || num <= 1 ? undefined : {
         next_triggered_by: 'merchant',
         currency: 'USD',
         merchant_trigger_reason: 'scheduled'
@@ -1052,32 +1059,11 @@ async function initAirwallex(){
       /* Airwallex filters Drop-in methods by currency + country_code and lists
        * country_code as REQUIRED for paypal. Without it PayPal never renders. */
       country_code: (function(){try{var c=sessionStorage.getItem('lla_buyer_country')||'US';return /^[A-Z]{2}$/.test(c)?c:'US';}catch(e){return 'US';}})(),
-      /* Google Pay (2026-09-17): eTeacher's Airwallex account now reports
-       * googlepay active (oneoff + recurring, USD/US) via
-       * /pa/config/payment_method_types. The Drop-In renders Google's own
-       * button above the card form; googlePayRequestOptions.countryCode is
-       * mandatory per Airwallex docs. Same intent, same success handler,
-       * same CRM SetECommercePayment and Meta Purchase path as card. */
+      /* Same payment-method configuration as the working pages.dev checkout. */
       methods:            ['card','paypal'],
       payment_methods:    ['card','paypal'],
       paymentMethods:     ['card','paypal'],
       payment_method_types:['card','paypal'],
-      applePayRequestOptions: {
-        countryCode: 'CY',
-        buttonType: 'buy',
-        buttonColor: 'black',
-        totalPriceLabel: 'Longevity Life Academy by eTeacher Group'
-      },
-      googlePayRequestOptions: {
-        countryCode: 'US',
-        merchantInfo: { merchantName: 'Longevity Life Academy by eTeacher Group' },
-        buttonType: 'pay',
-        buttonColor: 'black',
-        buttonSizeMode: 'fill',
-        allowedCardNetworks: ['VISA','MASTERCARD','AMEX','DISCOVER'],
-        emailRequired: false,
-        billingAddressRequired: false
-      },
       showPayButton: true,
       appearance: { locale: 'en' }
     });
@@ -1201,5 +1187,6 @@ apply();document.addEventListener('DOMContentLoaded',apply);setTimeout(apply,800
 <!-- WhatsApp floater (eTeacher IIBS button look; opens the LLA WhatsApp channel directly) -->
 <div id="et-bumpyard-widget" class="active"><div class="et-bump-btn-holder"><a class="widget-trigger-btn" href="https://wa.me/12015023701" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp"><img src="assets/wa/whatsapp.svg" alt=""> <span class="label">Available on WhatsApp</span></a></div></div>
 <script src="assets/julie-brand-motion-v7.js?v=20260923-blueprint-1"></script>
+<script src="../guest-mobile.js?v=20261027-mobile1"></script>
 </body>
 </html>
