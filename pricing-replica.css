@@ -3,6 +3,27 @@ html body#lpRoot#lpRoot#lpRoot #offer .lp-card{
  display:flex!important;flex-direction:column!important;gap:16px!important;
  background:linear-gradient(145deg,#12365f,#071d3b)!important;
 }
+/* Readable monthly terms, quiet total and text-only coupon choices. */
+html body#lpRoot#lpRoot#lpRoot#lpRoot #offer .credit-rest,
+html body#lpRoot#lpRoot#lpRoot#lpRoot #offer .credit-rest b{font-size:28px!important;line-height:1.4!important}
+html body#lpRoot#lpRoot#lpRoot #offer .credit-total,
+html body#lpRoot#lpRoot#lpRoot #offer .credit-total b,
+html body#lpRoot#lpRoot#lpRoot #offer .credit-total span{font:400 18px/1.4 Inter,sans-serif!important;color:#c8dbef!important}
+html body#lpRoot#lpRoot#lpRoot #offer .masterclass-credit-strip{background:#ffffff07!important;box-shadow:none!important;border-top:1px solid #ffffff20!important;border-bottom:1px solid #ffffff20!important}
+html body#lpRoot#lpRoot#lpRoot #offer .masterclass-credit-strip button,
+html body#lpRoot#lpRoot#lpRoot #mockStrip a.code,
+html body#lpRoot#lpRoot#lpRoot #mockStrip .t.sm a{background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;color:#fff!important;text-decoration:underline!important;text-decoration-color:#ffffff60!important;text-underline-offset:5px!important;font-weight:600!important}
+html body#lpRoot#lpRoot#lpRoot #mockStrip{background:#102d4e!important;box-shadow:none!important}
+html body#lpRoot#lpRoot#lpRoot #offer #codeInput{background:#ffffff09!important;border:1px solid #ffffff50!important;color:#fff!important;box-shadow:none!important}
+html body#lpRoot#lpRoot#lpRoot #offer .lp-bul li>span{flex:1!important;min-width:0!important;width:auto!important;max-width:none!important}
+html body#lpRoot#lpRoot#lpRoot #offer .lp-bul li .credit-benefit-detail{width:100%!important;max-width:none!important;line-height:1.5!important}
+@media(max-width:800px){
+ html body#lpRoot#lpRoot#lpRoot#lpRoot #offer .credit-rest,
+ html body#lpRoot#lpRoot#lpRoot#lpRoot #offer .credit-rest b{font-size:23px!important}
+ html body#lpRoot#lpRoot#lpRoot #offer .credit-total,
+ html body#lpRoot#lpRoot#lpRoot #offer .credit-total b,
+ html body#lpRoot#lpRoot#lpRoot #offer .credit-total span{font-size:17px!important}
+}
 html body#lpRoot#lpRoot#lpRoot #offer .credit-month-one{border:0!important;padding:0!important;margin:0!important}
 html body#lpRoot#lpRoot#lpRoot #offer .credit-amount{display:flex!important;align-items:baseline!important;gap:12px!important;min-height:0!important;flex-wrap:wrap!important}
 html body#lpRoot#lpRoot#lpRoot #offer .credit-month-one strong{font:750 76px/1.05 Inter,sans-serif!important;letter-spacing:-.045em!important}

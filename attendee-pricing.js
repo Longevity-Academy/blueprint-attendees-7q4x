@@ -20,13 +20,13 @@
     totalEl.classList.add('credit-total');totalEl.setAttribute('data-no-promo','');
     if(!$('#offer .credit-rest'))totalEl.insertAdjacentHTML('beforebegin','<div class="credit-rest" data-no-promo></div>');
     html('#offer .credit-rest','Then <b>$169/month</b> for 4 months');
-    html('#offer .lp-total','<span>Total tuition</span><b>$755</b>');
+    html('#offer .lp-total','<span>$755 total tuition</span>');
     if(!$('#offer .masterclass-credit-strip'))totalEl.insertAdjacentHTML('afterend','<div class="masterclass-credit-strip" data-no-promo><strong>Masterclass credit</strong><div class="credit-codes"><button type="button" data-credit-code="JULIE249">JULIE249</button><button type="button" data-credit-code="MASTERCLASS-VIP">MASTERCLASS-VIP</button></div></div>');
    }
    text('#codeApply','Enroll now');
    all('#offer .lp-lead').forEach(e=>e.remove());
    all('#faq .faq-item').forEach(e=>{if(/How much does it cost/i.test(e.querySelector('.faq-q')?.textContent||'')){const a=e.querySelector('.faq-a-inner');const t='With JULIE249 or MASTERCLASS-VIP: $79 in month 1, then four monthly payments of $169. Total tuition: $755.';if(a&&a.textContent!==t)a.textContent=t}});
-   const benefits=[['18 live classes','50 minutes on Zoom each week. Recordings and learning platform included.'],['Six longevity pillars','Nutrition, sleep, movement, supplements, stress and your personal protocol.'],['Abbott Lingo CGM','Glucose sensor and app, shipped to your door. Included in tuition.'],['Your personal Blueprint','A written longevity protocol built on your own numbers by week 18.']];
+   const benefits=[['18 live classes / once a week','Meet your instructor and small group on Zoom for a 50-minute class each week. Revisit the recordings and course materials on your learning platform between sessions.'],['Master 6 longevity pillars','Explore nutrition, sleep, movement, supplements and wearables, stress management, and your personal protocol. Turn each pillar into practical habits you can apply between classes.'],['Abbott Lingo CGM included','Your tuition includes an Abbott Lingo glucose sensor and app, shipped to your door. See how food and daily routines affect your glucose and bring those insights into your protocol.'],['Your personal Blueprint','Build a written longevity protocol around your own numbers, priorities and everyday routines. Bring together what you learn across all six pillars into your personal Blueprint by week 18.']];
    all('#offer .lp-bul li').forEach((li,i)=>{const span=li.querySelector('span'),item=benefits[i];if(!item){li.remove();return}if(span){const v='<b>'+item[0]+'</b><span class="credit-benefit-detail">'+item[1]+'</span>';if(span.innerHTML!==v)span.innerHTML=v}});
    text('#offer .lp-list h3','Included with your course');
    html('.att-price','<span class="att-big">$79</span><span class="att-unit">Month 1<br><s>$169</s></span>');
