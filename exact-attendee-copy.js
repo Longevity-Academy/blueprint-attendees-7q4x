@@ -31,7 +31,7 @@
   text('#offer .lp-lead','18 live classes, learning-platform access, Julie’s VIP masterclass and one Abbott Lingo sensor with U.S. shipping.');
   text('#offer .lp-big b','79');text('#offer .lp-saverow s','$169 / month');
   text('#offer .lp-pill','Masterclass credit');
-  html('#offer .lp-total','<b>$755 total</b><small>$90 masterclass credit applied to month 1.</small>');
+  html('#offer .lp-total','<b>$755 total</b>');
   text('#codeApply','Apply code and enroll');
   text('#offer .lp-julie-t b','Masterclass attendee code');
   html('#offer .lp-trust','<b>Full refund within 14 days of registration.</b> Questions? Call +1-888-230-5110.');
@@ -48,7 +48,7 @@
   document.querySelectorAll('#whatitis .pdp-value-card h3').forEach((h,i)=>{if(methodTitles[i])h.textContent=methodTitles[i]});
   html('#faq h2','Frequently asked <em>questions</em>');
   document.querySelectorAll('#faq .faq-item').forEach(item=>{
-   if(/How much does it cost/i.test(item.textContent)){const answer=item.querySelector('.faq-a-inner');if(answer)answer.textContent='Regular tuition is $169 per month for five months, $845 total. Apply JULIE249 or MASTERCLASS-VIP for a $90 masterclass credit: $79 in month 1, then four monthly payments of $169. Total: $755.'}
+   if(/How much does it cost/i.test(item.textContent)){const answer=item.querySelector('.faq-a-inner');if(answer)answer.textContent='With JULIE249 or MASTERCLASS-VIP: $79 in month 1, then four monthly payments of $169. Total tuition: $755.'}
   });
   const strip=document.getElementById('mockStrip');if(strip)strip.innerHTML='<span class="t lg">Use your masterclass coupon code</span><span class="t sm"><a href="#offer" data-coupon="JULIE249">JULIE249</a><span>or</span><a href="#offer" data-coupon="MASTERCLASS-VIP">MASTERCLASS-VIP</a></span><a class="code" href="#offer" data-coupon="JULIE249">JULIE249</a><a class="code" href="#offer" data-coupon="MASTERCLASS-VIP">MASTERCLASS-VIP</a>';
   const bar=document.getElementById('mockBar');if(bar){const price=bar.querySelector('.l b');if(price)price.textContent='$79 month 1';const a=bar.querySelector('a');if(a){a.href='#offer';a.dataset.enrollCourse='1';a.textContent='Enroll now'}}

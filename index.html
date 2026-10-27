@@ -9053,8 +9053,169 @@ window.LLA_GOOGLE_CAMPAIGN_IDS = window.LLA_GOOGLE_CAMPAIGN_IDS || {
 <link rel="stylesheet" href="guest-mobile.css?v=20261027-mobile4">
 <script src="guest-mobile.js?v=20261027-mobile5" defer></script>
 <link rel="stylesheet" href="attendee-pricing.css?v=compact1">
-<script src="attendee-pricing.js?v=compact1" defer></script>
+<script src="attendee-pricing.js?v=space1" defer></script>
 <link rel="stylesheet" href="launch-flow.css?v=hero5">
 <script src="launch-flow.js?v=hero4" defer></script>
-<div id="mockStrip"><span class="t lg">Julie’s promo: <b>$149 a month</b> instead of <span data-no-promo="">$179</span>, her VIP Masterclass included. <b>You save $249</b></span><span class="t sm" onclick="mockCopy(this)"><span class="c">JULIE249</span><span>·</span><span><b>$149</b>/mo + VIP seat</span></span><span class="code" onclick="mockCopy(this)">JULIE249</span><span class="cd" data-cd="">00d 00h 00m 00s</span></div><div id="mockBar"><div class="l"><i>The Longevity Blueprint</i><b>$179<small>/ mo</small></b></div><a href="#offer" data-fn-cta="floater">Enroll Now</a></div><script src="exact-attendee-copy.js?v=hero4"></script><script src="attendee-form.js?v=guest-flow-20261027b"></script><script src="blueprint-timezones.js?v=202611-est-pst" defer></script>
+<div id="mockStrip"><span class="t lg">Julie’s promo: <b><div id="mockStrip"><span class="t lg">Julie’s promo: <b>$149 a month</b> instead of <span data-no-promo="">$179</span>, her VIP Masterclass included. <b>You save $249</b></span><span class="t sm" onclick="mockCopy(this)"><span class="c">JULIE249</span><span>·</span><span><b>$149</b>/mo + VIP seat</span></span><span class="code" onclick="mockCopy(this)">JULIE249</span><span class="cd" data-cd="">00d 00h 00m 00s</span></div><div id="mockBar"><div class="l"><i>The Longevity Blueprint</i><b>$179<small>/ mo</small></b></div><a href="#offer" data-fn-cta="floater">Enroll Now</a></div><script src="exact-attendee-copy.js?v=hero4"></script><script src="attendee-form.js?v=guest-flow-20261027b"></script><script src="blueprint-timezones.js?v=202611-est-pst" defer></script>
+49 a month</b> instead of <span data-no-promo=""><div id="mockStrip"><span class="t lg">Julie’s promo: <b>$149 a month</b> instead of <span data-no-promo="">$179</span>, her VIP Masterclass included. <b>You save $249</b></span><span class="t sm" onclick="mockCopy(this)"><span class="c">JULIE249</span><span>·</span><span><b>$149</b>/mo + VIP seat</span></span><span class="code" onclick="mockCopy(this)">JULIE249</span><span class="cd" data-cd="">00d 00h 00m 00s</span></div><div id="mockBar"><div class="l"><i>The Longevity Blueprint</i><b>$179<small>/ mo</small></b></div><a href="#offer" data-fn-cta="floater">Enroll Now</a></div><script src="exact-attendee-copy.js?v=hero4"></script><script src="attendee-form.js?v=guest-flow-20261027b"></script><script src="blueprint-timezones.js?v=202611-est-pst" defer></script>
+79</span>, her VIP Masterclass included. <b>You save <div id="mockStrip"><span class="t lg">Julie’s promo: <b>$149 a month</b> instead of <span data-no-promo="">$179</span>, her VIP Masterclass included. <b>You save $249</b></span><span class="t sm" onclick="mockCopy(this)"><span class="c">JULIE249</span><span>·</span><span><b>$149</b>/mo + VIP seat</span></span><span class="code" onclick="mockCopy(this)">JULIE249</span><span class="cd" data-cd="">00d 00h 00m 00s</span></div><div id="mockBar"><div class="l"><i>The Longevity Blueprint</i><b>$179<small>/ mo</small></b></div><a href="#offer" data-fn-cta="floater">Enroll Now</a></div><script src="exact-attendee-copy.js?v=space1"></script><script src="attendee-form.js?v=guest-flow-20261027b"></script>  <!-- Global Floating Enroll CTA -->
+  <style id="main-site-floater-design">
+    .lla-float-cta{
+      position:fixed;top:96px;right:32px;z-index:9999;
+      display:inline-flex;align-items:stretch;cursor:pointer;text-decoration:none;
+      font-family:'Inter','Codec Pro',sans-serif;
+      border-radius:18px;overflow:hidden;
+      background:linear-gradient(180deg,#0F2D52 0%,#0A2240 100%);
+      border:1px solid rgba(255,255,255,.10);
+      box-shadow:
+        0 0 0 1px rgba(120,180,255,.18),
+        0 14px 36px rgba(8,30,60,.28),
+        0 0 28px rgba(120,190,255,.18);
+      opacity:0;transform:translateY(-12px);pointer-events:none;
+      transition:opacity .45s ease, transform .45s cubic-bezier(.2,.7,.2,1), box-shadow .25s ease;
+    }
+    .lla-float-cta.is-visible{opacity:1;transform:translateY(0);pointer-events:auto}
+    .lla-float-cta:hover{
+      transform:translateY(-2px);
+      box-shadow:
+        0 0 0 1px rgba(140,200,255,.35),
+        0 18px 44px rgba(8,30,60,.34),
+        0 0 44px rgba(120,190,255,.42);
+    }
+    .lla-float-cta .lla-cta-text{
+      display:flex;flex-direction:column;justify-content:center;
+      padding:14px 18px 14px 20px;gap:4px;
+    }
+    .lla-float-cta .lla-cta-eyebrow{
+      display:flex;align-items:center;gap:8px;
+      font-size:10.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+      color:#8FB9F0;
+    }
+    .lla-float-cta .lla-cta-eyebrow::before{
+      content:"";width:6px;height:6px;border-radius:50%;
+      background:#5EB6FF;box-shadow:0 0 8px #5EB6FF,0 0 14px rgba(94,182,255,.7);
+      animation:llaDot 2.2s ease-in-out infinite;
+    }
+    .lla-float-cta .lla-cta-title{
+      font-family:'Codec Pro','Inter',sans-serif;
+      font-size:15.5px;font-weight:700;color:#fff;letter-spacing:.1px;line-height:1.1;
+    }
+    .lla-float-cta .lla-cta-pill{
+      display:flex;align-items:center;gap:8px;
+      padding:0 22px;margin:8px 8px 8px 6px;border-radius:12px;
+      background:linear-gradient(180deg,#5EB6FF 0%,#2E8BE6 100%);
+      color:#06243F;font-weight:800;font-size:14.5px;letter-spacing:.1px;
+      box-shadow:0 1px 0 rgba(255,255,255,.55) inset, 0 8px 20px rgba(46,139,230,.32);
+    }
+    .lla-float-cta .lla-cta-pill .price{font-size:15.5px;font-weight:900}
+    .lla-float-cta .lla-cta-pill .mo{font-size:11px;font-weight:700;color:#0A2240;opacity:.78;letter-spacing:.06em}
+    .lla-float-cta .lla-cta-arrow{width:16px;height:16px;color:#06243F;transition:transform .25s ease}
+    .lla-float-cta:hover .lla-cta-arrow{transform:translateX(3px)}
+    @keyframes llaDot{
+      0%,100%{box-shadow:0 0 8px #5EB6FF,0 0 14px rgba(94,182,255,.7)}
+      50%{box-shadow:0 0 14px #5EB6FF,0 0 24px rgba(94,182,255,1)}
+    }
+    @media (max-width:720px){
+      .lla-float-cta{top:12px;right:12px;left:12px;border-radius:14px}
+      .lla-float-cta .lla-cta-text{padding:10px 12px 10px 14px;flex:1;min-width:0}
+      .lla-float-cta .lla-cta-title{font-size:14px}
+      .lla-float-cta .lla-cta-eyebrow{font-size:9.5px}
+      .lla-float-cta .lla-cta-pill{padding:0 14px;margin:6px 6px 6px 4px;border-radius:10px}
+      .lla-float-cta .lla-cta-pill .price{font-size:14px}
+      .lla-float-cta .lla-cta-pill .mo{font-size:10px}
+    }
+  </style>
+  <a href="#enrollModal" data-enroll-course="1" class="lla-float-cta is-visible" id="llaFloatCta" aria-label="Enroll Now in The Longevity Blueprint — $79 first month, then four payments of $169">
+    <span class="lla-cta-text">
+      <span class="lla-cta-eyebrow">Enroll Now</span>
+      <span class="lla-cta-title">The Longevity Blueprint</span>
+    </span>
+    <span class="lla-cta-pill">
+      <span class="price">$79</span><span class="mo">MONTH 1</span>
+      <svg class="lla-cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+    </span>
+  </a>
+<link rel="stylesheet" href="pricing-space.css?v=space1">
+49</b></span><span class="t sm" onclick="mockCopy(this)"><span class="c">JULIE249</span><span>·</span><span><b><div id="mockStrip"><span class="t lg">Julie’s promo: <b>$149 a month</b> instead of <span data-no-promo="">$179</span>, her VIP Masterclass included. <b>You save $249</b></span><span class="t sm" onclick="mockCopy(this)"><span class="c">JULIE249</span><span>·</span><span><b>$149</b>/mo + VIP seat</span></span><span class="code" onclick="mockCopy(this)">JULIE249</span><span class="cd" data-cd="">00d 00h 00m 00s</span></div><div id="mockBar"><div class="l"><i>The Longevity Blueprint</i><b>$179<small>/ mo</small></b></div><a href="#offer" data-fn-cta="floater">Enroll Now</a></div><script src="exact-attendee-copy.js?v=hero4"></script><script src="attendee-form.js?v=guest-flow-20261027b"></script><script src="blueprint-timezones.js?v=202611-est-pst" defer></script>
+49</b>/mo + VIP seat</span></span><span class="code" onclick="mockCopy(this)">JULIE249</span><span class="cd" data-cd="">00d 00h 00m 00s</span></div><div id="mockBar"><div class="l"><i>The Longevity Blueprint</i><b><div id="mockStrip"><span class="t lg">Julie’s promo: <b>$149 a month</b> instead of <span data-no-promo="">$179</span>, her VIP Masterclass included. <b>You save $249</b></span><span class="t sm" onclick="mockCopy(this)"><span class="c">JULIE249</span><span>·</span><span><b>$149</b>/mo + VIP seat</span></span><span class="code" onclick="mockCopy(this)">JULIE249</span><span class="cd" data-cd="">00d 00h 00m 00s</span></div><div id="mockBar"><div class="l"><i>The Longevity Blueprint</i><b>$179<small>/ mo</small></b></div><a href="#offer" data-fn-cta="floater">Enroll Now</a></div><script src="exact-attendee-copy.js?v=hero4"></script><script src="attendee-form.js?v=guest-flow-20261027b"></script><script src="blueprint-timezones.js?v=202611-est-pst" defer></script>
+79<small>/ mo</small></b></div><a href="#offer" data-fn-cta="floater">Enroll Now</a></div><script src="exact-attendee-copy.js?v=space1"></script><script src="attendee-form.js?v=guest-flow-20261027b"></script>  <!-- Global Floating Enroll CTA -->
+  <style id="main-site-floater-design">
+    .lla-float-cta{
+      position:fixed;top:96px;right:32px;z-index:9999;
+      display:inline-flex;align-items:stretch;cursor:pointer;text-decoration:none;
+      font-family:'Inter','Codec Pro',sans-serif;
+      border-radius:18px;overflow:hidden;
+      background:linear-gradient(180deg,#0F2D52 0%,#0A2240 100%);
+      border:1px solid rgba(255,255,255,.10);
+      box-shadow:
+        0 0 0 1px rgba(120,180,255,.18),
+        0 14px 36px rgba(8,30,60,.28),
+        0 0 28px rgba(120,190,255,.18);
+      opacity:0;transform:translateY(-12px);pointer-events:none;
+      transition:opacity .45s ease, transform .45s cubic-bezier(.2,.7,.2,1), box-shadow .25s ease;
+    }
+    .lla-float-cta.is-visible{opacity:1;transform:translateY(0);pointer-events:auto}
+    .lla-float-cta:hover{
+      transform:translateY(-2px);
+      box-shadow:
+        0 0 0 1px rgba(140,200,255,.35),
+        0 18px 44px rgba(8,30,60,.34),
+        0 0 44px rgba(120,190,255,.42);
+    }
+    .lla-float-cta .lla-cta-text{
+      display:flex;flex-direction:column;justify-content:center;
+      padding:14px 18px 14px 20px;gap:4px;
+    }
+    .lla-float-cta .lla-cta-eyebrow{
+      display:flex;align-items:center;gap:8px;
+      font-size:10.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+      color:#8FB9F0;
+    }
+    .lla-float-cta .lla-cta-eyebrow::before{
+      content:"";width:6px;height:6px;border-radius:50%;
+      background:#5EB6FF;box-shadow:0 0 8px #5EB6FF,0 0 14px rgba(94,182,255,.7);
+      animation:llaDot 2.2s ease-in-out infinite;
+    }
+    .lla-float-cta .lla-cta-title{
+      font-family:'Codec Pro','Inter',sans-serif;
+      font-size:15.5px;font-weight:700;color:#fff;letter-spacing:.1px;line-height:1.1;
+    }
+    .lla-float-cta .lla-cta-pill{
+      display:flex;align-items:center;gap:8px;
+      padding:0 22px;margin:8px 8px 8px 6px;border-radius:12px;
+      background:linear-gradient(180deg,#5EB6FF 0%,#2E8BE6 100%);
+      color:#06243F;font-weight:800;font-size:14.5px;letter-spacing:.1px;
+      box-shadow:0 1px 0 rgba(255,255,255,.55) inset, 0 8px 20px rgba(46,139,230,.32);
+    }
+    .lla-float-cta .lla-cta-pill .price{font-size:15.5px;font-weight:900}
+    .lla-float-cta .lla-cta-pill .mo{font-size:11px;font-weight:700;color:#0A2240;opacity:.78;letter-spacing:.06em}
+    .lla-float-cta .lla-cta-arrow{width:16px;height:16px;color:#06243F;transition:transform .25s ease}
+    .lla-float-cta:hover .lla-cta-arrow{transform:translateX(3px)}
+    @keyframes llaDot{
+      0%,100%{box-shadow:0 0 8px #5EB6FF,0 0 14px rgba(94,182,255,.7)}
+      50%{box-shadow:0 0 14px #5EB6FF,0 0 24px rgba(94,182,255,1)}
+    }
+    @media (max-width:720px){
+      .lla-float-cta{top:12px;right:12px;left:12px;border-radius:14px}
+      .lla-float-cta .lla-cta-text{padding:10px 12px 10px 14px;flex:1;min-width:0}
+      .lla-float-cta .lla-cta-title{font-size:14px}
+      .lla-float-cta .lla-cta-eyebrow{font-size:9.5px}
+      .lla-float-cta .lla-cta-pill{padding:0 14px;margin:6px 6px 6px 4px;border-radius:10px}
+      .lla-float-cta .lla-cta-pill .price{font-size:14px}
+      .lla-float-cta .lla-cta-pill .mo{font-size:10px}
+    }
+  </style>
+  <a href="#enrollModal" data-enroll-course="1" class="lla-float-cta is-visible" id="llaFloatCta" aria-label="Enroll Now in The Longevity Blueprint — $79 first month, then four payments of <div id="mockStrip"><span class="t lg">Julie’s promo: <b>$149 a month</b> instead of <span data-no-promo="">$179</span>, her VIP Masterclass included. <b>You save $249</b></span><span class="t sm" onclick="mockCopy(this)"><span class="c">JULIE249</span><span>·</span><span><b>$149</b>/mo + VIP seat</span></span><span class="code" onclick="mockCopy(this)">JULIE249</span><span class="cd" data-cd="">00d 00h 00m 00s</span></div><div id="mockBar"><div class="l"><i>The Longevity Blueprint</i><b>$179<small>/ mo</small></b></div><a href="#offer" data-fn-cta="floater">Enroll Now</a></div><script src="exact-attendee-copy.js?v=hero4"></script><script src="attendee-form.js?v=guest-flow-20261027b"></script><script src="blueprint-timezones.js?v=202611-est-pst" defer></script>
+69">
+    <span class="lla-cta-text">
+      <span class="lla-cta-eyebrow">Enroll Now</span>
+      <span class="lla-cta-title">The Longevity Blueprint</span>
+    </span>
+    <span class="lla-cta-pill">
+      <span class="price">$79</span><span class="mo">MONTH 1</span>
+      <svg class="lla-cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+    </span>
+  </a>
+<link rel="stylesheet" href="pricing-space.css?v=space1">
+<script src="blueprint-timezones.js?v=202611-est-pst" defer></script>
 </body></html>

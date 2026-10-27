@@ -1,0 +1,60 @@
+/* Compact arrangement around the existing price and form hooks. */
+html body#lpRoot#lpRoot#lpRoot #offer .lp-wrap{max-width:1240px!important;margin:auto!important}
+html body#lpRoot#lpRoot#lpRoot #offer .lp-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;gap:28px!important}
+html body#lpRoot#lpRoot#lpRoot #offer .lp-card{display:grid!important;grid-template-columns:1fr 1fr!important;gap:12px 20px!important;max-width:none!important;padding:24px!important}
+html body#lpRoot#lpRoot#lpRoot #offer .lp-plan{grid-column:1/-1;margin:0!important;font-size:18px!important}
+html body#lpRoot#lpRoot#lpRoot #offer .credit-month-one{grid-column:1;margin:0!important;gap:8px!important}
+html body#lpRoot#lpRoot#lpRoot #offer .credit-month-one strong{font-size:76px!important}
+html body#lpRoot#lpRoot#lpRoot #offer .credit-month-one s{font-size:26px!important}
+html body#lpRoot#lpRoot#lpRoot #offer .credit-month-one>span{flex-basis:100%;font-size:18px!important}
+html body#lpRoot#lpRoot#lpRoot #offer .credit-rest{grid-column:2;display:flex!important;flex-direction:column;justify-content:center;align-items:flex-start;border:0!important;border-left:1px solid #ffffff30!important;padding:0 0 0 20px!important;gap:7px;font-size:19px!important}
+html body#lpRoot#lpRoot#lpRoot #offer .credit-rest b{font-size:32px!important}
+html body#lpRoot#lpRoot#lpRoot #offer .credit-total{grid-column:1/-1;margin:0!important;padding:10px 0 0!important;font-size:24px!important}
+html body#lpRoot#lpRoot#lpRoot #offer .masterclass-credit-strip{grid-column:1/-1;margin:0 -24px!important;padding:8px 16px!important;gap:10px!important;flex-wrap:nowrap!important}
+html body#lpRoot#lpRoot#lpRoot #offer .masterclass-credit-strip strong{font-size:15px!important;white-space:nowrap}
+html body#lpRoot#lpRoot#lpRoot #offer .credit-codes{flex-wrap:nowrap!important;gap:8px!important}
+html body#lpRoot#lpRoot#lpRoot #offer .masterclass-credit-strip button{padding:8px 10px!important;font-size:14px!important;min-height:44px!important;white-space:nowrap}
+html body#lpRoot#lpRoot#lpRoot #offer .attendee-coupon{grid-column:1/-1;display:grid!important;grid-template-columns:minmax(0,1fr) minmax(150px,.85fr);gap:10px!important;margin:0!important}
+html body#lpRoot#lpRoot#lpRoot #offer .attendee-coupon label{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip-path:inset(50%)}
+html body#lpRoot#lpRoot#lpRoot #offer #codeInput{margin:0!important;min-width:0!important;height:52px!important;padding:12px!important;font-size:17px!important;border-radius:10px!important}
+html body#lpRoot#lpRoot#lpRoot #offer #codeApply{margin:0!important;min-width:0!important;height:52px!important;min-height:52px!important;padding:10px 12px!important;border-radius:10px!important;font-size:20px!important}
+html body#lpRoot#lpRoot#lpRoot #offer #codeMsg:not(.err){display:none!important}
+html body#lpRoot#lpRoot#lpRoot #offer #codeMsg.err{grid-column:1/-1;font-size:16px!important;margin:0!important}
+html body#lpRoot#lpRoot#lpRoot #offer .lp-trust{grid-column:1/-1;margin:0!important;font-size:15px!important;line-height:1.45!important}
+html body#lpRoot#lpRoot#lpRoot #offer .lp-list h3{font-size:23px!important;text-transform:none!important;letter-spacing:0!important;margin:0 0 14px!important}
+html body#lpRoot#lpRoot#lpRoot #offer .lp-bul{display:grid!important;grid-template-columns:1fr 1fr!important;gap:12px!important;margin:0!important}
+html body#lpRoot#lpRoot#lpRoot #offer .lp-bul li{display:block!important;padding:18px!important;border-radius:16px!important;margin:0!important;border:0!important;min-width:0}
+html body#lpRoot#lpRoot#lpRoot #offer .lp-bul li i{display:none!important}
+html body#lpRoot#lpRoot#lpRoot #offer .lp-bul li b{display:block!important;font-size:24px!important;line-height:1.15!important;margin-bottom:8px!important;color:inherit!important}
+html body#lpRoot#lpRoot#lpRoot #offer .credit-benefit-detail{font-size:16px!important;line-height:1.45!important;display:block!important;color:inherit!important}
+html body#lpRoot#lpRoot#lpRoot #offer .lp-bul li:nth-child(1){background:#006eff!important;color:#fff!important}
+html body#lpRoot#lpRoot#lpRoot #offer .lp-bul li:nth-child(2){background:#dcefff!important;color:#103c68!important}
+html body#lpRoot#lpRoot#lpRoot #offer .lp-bul li:nth-child(3){background:#d6f3ef!important;color:#105c57!important}
+html body#lpRoot#lpRoot#lpRoot #offer .lp-bul li:nth-child(4){background:#12365f!important;color:#fff!important}
+html body#lpRoot#lpRoot#lpRoot #offer .lp-bul li:nth-child(5){background:#bde7ff!important;color:#0b375a!important;grid-column:1/-1}
+html body#lpRoot#lpRoot#lpRoot #offer .lp-bul li>span{color:inherit!important}
+html body#lpRoot#lpRoot#lpRoot #offer .lp-num{display:none!important}
+html body#lpRoot#lpRoot#lpRoot #mockBar{display:none!important}
+.lla-float-cta{top:auto!important;bottom:20px!important;right:24px!important}
+.lla-float-cta .lla-cta-eyebrow{font-size:13px!important;letter-spacing:.02em!important;text-transform:none!important}
+.lla-float-cta .lla-cta-title{font-size:17px!important}
+.lla-float-cta .lla-cta-pill .price{font-size:25px!important}
+.lla-float-cta .lla-cta-pill .mo{font-size:13px!important;letter-spacing:0!important}
+html.guest-form-focused .lla-float-cta,html.guest-menu-open .lla-float-cta,body:has(#enrollModal.open) .lla-float-cta{display:none!important}
+@media(max-width:800px){
+ html body#lpRoot#lpRoot#lpRoot #offer .lp-grid{grid-template-columns:1fr!important;max-width:650px!important;margin-inline:auto!important}
+ html body#lpRoot#lpRoot#lpRoot #offer .lp-card{padding:20px!important;gap:12px!important}
+ html body#lpRoot#lpRoot#lpRoot #offer .credit-month-one strong{font-size:62px!important}
+ html body#lpRoot#lpRoot#lpRoot #offer .credit-month-one s{font-size:22px!important}
+ html body#lpRoot#lpRoot#lpRoot #offer .credit-rest{padding-left:12px!important;font-size:16px!important}
+ html body#lpRoot#lpRoot#lpRoot #offer .credit-rest b{font-size:27px!important}
+ html body#lpRoot#lpRoot#lpRoot #offer .masterclass-credit-strip{margin:0 -20px!important;padding:8px 14px!important;justify-content:center!important}
+ html body#lpRoot#lpRoot#lpRoot #offer .masterclass-credit-strip>strong{display:none!important}
+ html body#lpRoot#lpRoot#lpRoot #offer .lp-bul li{padding:16px!important}
+ html body#lpRoot#lpRoot#lpRoot #offer .lp-bul li b{font-size:22px!important}
+ html body#lpRoot#lpRoot#lpRoot #offer #codeInput{font-size:15px!important}
+ html body#lpRoot#lpRoot#lpRoot #offer .attendee-coupon{grid-template-columns:minmax(0,1fr) minmax(120px,.85fr)!important}
+ .lla-float-cta{top:auto!important;bottom:12px!important;left:12px!important;right:12px!important}
+ .lla-float-cta .lla-cta-title{font-size:15px!important}
+ .lla-float-cta .lla-cta-text{padding:10px 12px!important}
+}
