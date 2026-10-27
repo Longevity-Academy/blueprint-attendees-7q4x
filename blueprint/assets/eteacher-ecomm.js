@@ -382,6 +382,8 @@ var BLUEPRINT_CLASSES = [{"courseId":170275,"semesterId":2395,"start":"2026-11-2
             (!q.env || q.env === CFG.env) && q.currency === 'USD' &&
             ((Number(q.numberOfPayments) === 4 && Number(q.leftToPay) === Number(q.firstPayment) * 4 &&
               (Number(q.firstPayment) === 149 || Number(q.firstPayment) === 179)) ||
+             (Number(q.numberOfPayments) === 4 && Number(q.leftToPay) === 676 &&
+              (Number(q.firstPayment) === 79 || Number(q.firstPayment) === 169)) ||
              (Number(q.numberOfPayments) <= 1 && Number(q.firstPayment) === 799 && Number(q.leftToPay) === 0))) {
           q.paymentPerMonth = Number(q.numberOfPayments) ? Number(q.leftToPay) / Number(q.numberOfPayments) : 0;
           q.total = Number(q.firstPayment) + Number(q.leftToPay);
@@ -423,6 +425,19 @@ var BLUEPRINT_CLASSES = [{"courseId":170275,"semesterId":2395,"start":"2026-11-2
       var built = buildLeadPayload(fields);
       if (built.error) return { ok: false, error: built.error, reason: built.reason };
       try {
+        // A newly started enrollment uses its displayed price, not IDs cached
+        // before this offer changed. Existing explicit checkout URLs stay intact.
+        var explicit = new URLSearchParams(location.search);
+        var oldQuote = null;
+        try { oldQuote = JSON.parse(sessionStorage.getItem('lla_order_quote_v1') || 'null'); } catch(ignore) {}
+        if (!explicit.get('orderid') && oldQuote &&
+            (Number(oldQuote.firstPayment)!==Number(built.payload.FirstPayment) ||
+             Number(oldQuote.numberOfPayments)!==Number(built.payload.NumberOfPayments) ||
+             Number(oldQuote.leftToPay)!==Number(built.payload.LeftToPay))) {
+          sessionStorage.removeItem('lla_ecomm_ids');
+          sessionStorage.removeItem('lla_order_quote_v1');
+          sessionStorage.removeItem('lla_selected_class_v1');
+        }
         sessionStorage.setItem(PENDING_KEY, JSON.stringify({ payload: built.payload, env: CFG.env, ts: Date.now() }));
       } catch(e) {
         return { ok: false, error: 'storage_unavailable' };
