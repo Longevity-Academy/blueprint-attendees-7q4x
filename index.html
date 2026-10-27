@@ -7926,8 +7926,8 @@ window.LLA_GOOGLE_CAMPAIGN_IDS = window.LLA_GOOGLE_CAMPAIGN_IDS || {
       </div>
       <select class="em-in dp-native" id="emDate" required tabindex="-1" aria-hidden="true">
         <option value="" disabled selected>Select a starting date</option>
-          <option value="Mon Nov 23, 2026 · 8:00 PM ET · 7:00 PM CT · 5:00 PM PT · weekly (2026-11-23)" data-start="2026-11-23" data-course-id="170275" data-semester-id="2395" data-month="November" data-wd="Mon" data-day="23" data-mon="Nov" data-et="8:00 PM" data-ct="7:00 PM" data-pt="5:00 PM">Mon Nov 23 · 8:00 PM ET</option>
-<option value="Wed Nov 25, 2026 · 12:00 PM ET · 11:00 AM CT · 9:00 AM PT · weekly (2026-11-25)" data-start="2026-11-25" data-course-id="170277" data-semester-id="2395" data-month="November" data-wd="Wed" data-day="25" data-mon="Nov" data-et="12:00 PM" data-ct="11:00 AM" data-pt="9:00 AM">Wed Nov 25 · 12:00 PM ET</option>
+          <option value="Mon Nov 23, 2026 · 8:00 PM EST · 5:00 PM PST · weekly (2026-11-23)" data-start="2026-11-23" data-course-id="170275" data-semester-id="2395" data-month="November" data-wd="Mon" data-day="23" data-mon="Nov" data-et="8:00 PM" data-ct="7:00 PM" data-pt="5:00 PM">Mon Nov 23 · 8:00 PM ET</option>
+<option value="Wed Nov 25, 2026 · 12:00 PM EST · 9:00 AM PST · weekly (2026-11-25)" data-start="2026-11-25" data-course-id="170277" data-semester-id="2395" data-month="November" data-wd="Wed" data-day="25" data-mon="Nov" data-et="12:00 PM" data-ct="11:00 AM" data-pt="9:00 AM">Wed Nov 25 · 12:00 PM ET</option>
       </select>
       <script>
       (function(){try{
@@ -7958,7 +7958,7 @@ window.LLA_GOOGLE_CAMPAIGN_IDS = window.LLA_GOOGLE_CAMPAIGN_IDS || {
             var soldout=o.hasAttribute('data-soldout'),on=!o.disabled&&sel.value===o.value;var c=document.createElement('button');c.type='button';c.className='dp-card'+(on?' on':'');c.disabled=o.disabled;c.setAttribute('role','radio');c.setAttribute('aria-checked',on?'true':'false');if(o.disabled)c.setAttribute('aria-disabled','true');
             var _h=parseInt(o.getAttribute('data-et'),10),evening=/PM/.test(o.getAttribute('data-et'))&&_h!==12&&_h>=5;
             c.innerHTML='<span class="dp-date"><span class="dp-wd">'+o.getAttribute('data-wd')+'</span><span class="dp-day">'+o.getAttribute('data-mon')+' '+o.getAttribute('data-day')+'</span></span>'
-              +'<span class="dp-times"><span class="dp-et">'+o.getAttribute('data-et').replace(/\s*(AM|PM)/i,function(_,x){return x.toLowerCase();})+' - '+endTime(o.getAttribute('data-et'))+' <small>ET</small></span><span class="dp-alt">'+o.getAttribute('data-ct')+' CT &nbsp;·&nbsp; '+o.getAttribute('data-pt')+' PT</span></span>'
+              +'<span class="dp-times"><span class="dp-et">'+o.getAttribute('data-et').replace(/\s*(AM|PM)/i,function(_,x){return x.toLowerCase();})+' - '+endTime(o.getAttribute('data-et'))+' <small>EST</small></span><span class="dp-alt">'+o.getAttribute('data-pt')+' PST</span></span>'
               +(soldout?'<span class="dp-seats">SOLD OUT</span>':(o.getAttribute('data-start')<today?'<span class="dp-late">Started · join by '+o.getAttribute('data-lastlabel')+'</span>':''))+'<span class="dp-check" aria-hidden="true"></span>';
             if(!o.disabled)c.addEventListener('click',function(){sel.value=o.value;sel.dispatchEvent(new Event('change',{bubbles:true}));render();});
             list.appendChild(c);
@@ -9056,4 +9056,5 @@ window.LLA_GOOGLE_CAMPAIGN_IDS = window.LLA_GOOGLE_CAMPAIGN_IDS || {
 <script src="attendee-pricing.js?v=compact1" defer></script>
 <link rel="stylesheet" href="launch-flow.css?v=hero5">
 <script src="launch-flow.js?v=hero4" defer></script>
-<div id="mockStrip"><span class="t lg">Julie’s promo: <b>$149 a month</b> instead of <span data-no-promo="">$179</span>, her VIP Masterclass included. <b>You save $249</b></span><span class="t sm" onclick="mockCopy(this)"><span class="c">JULIE249</span><span>·</span><span><b>$149</b>/mo + VIP seat</span></span><span class="code" onclick="mockCopy(this)">JULIE249</span><span class="cd" data-cd="">00d 00h 00m 00s</span></div><div id="mockBar"><div class="l"><i>The Longevity Blueprint</i><b>$179<small>/ mo</small></b></div><a href="#offer" data-fn-cta="floater">Enroll Now</a></div><script src="exact-attendee-copy.js?v=hero4"></script><script src="attendee-form.js?v=guest-flow-20261027b"></script></body></html>
+<div id="mockStrip"><span class="t lg">Julie’s promo: <b>$149 a month</b> instead of <span data-no-promo="">$179</span>, her VIP Masterclass included. <b>You save $249</b></span><span class="t sm" onclick="mockCopy(this)"><span class="c">JULIE249</span><span>·</span><span><b>$149</b>/mo + VIP seat</span></span><span class="code" onclick="mockCopy(this)">JULIE249</span><span class="cd" data-cd="">00d 00h 00m 00s</span></div><div id="mockBar"><div class="l"><i>The Longevity Blueprint</i><b>$179<small>/ mo</small></b></div><a href="#offer" data-fn-cta="floater">Enroll Now</a></div><script src="exact-attendee-copy.js?v=hero4"></script><script src="attendee-form.js?v=guest-flow-20261027b"></script><script src="blueprint-timezones.js?v=202611-est-pst" defer></script>
+</body></html>
