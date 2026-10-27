@@ -35,7 +35,9 @@ html body#lpRoot#lpRoot#lpRoot #offer .lp-bul li:nth-child(5){background:#bde7ff
 html body#lpRoot#lpRoot#lpRoot #offer .lp-bul li>span{color:inherit!important}
 html body#lpRoot#lpRoot#lpRoot #offer .lp-num{display:none!important}
 html body#lpRoot#lpRoot#lpRoot #mockBar{display:none!important}
-.lla-float-cta{top:auto!important;bottom:20px!important;right:24px!important}
+.lla-float-cta{top:auto!important;bottom:20px!important;right:24px!important;font-style:normal!important}
+html body#lpRoot#lpRoot#lpRoot #attendeeFloatCta{position:fixed!important;inset:auto 24px 20px auto!important;display:inline-flex!important;align-items:stretch!important;justify-content:flex-start!important;gap:0!important;padding:0!important;width:auto!important;max-width:none!important;height:auto!important;opacity:1!important;visibility:visible!important;transform:none!important;pointer-events:auto!important;z-index:9999!important;border-radius:18px!important;background:linear-gradient(180deg,#0f2d52,#0a2240)!important;border:1px solid #ffffff1a!important;box-shadow:0 0 0 1px #78b4ff2e,0 14px 36px #081e3c47,0 0 28px #78beff2e!important}
+html.guest-form-focused body#lpRoot#lpRoot#lpRoot #attendeeFloatCta,html.guest-menu-open body#lpRoot#lpRoot#lpRoot #attendeeFloatCta,html body#lpRoot#lpRoot#lpRoot:has(#enrollModal.open) #attendeeFloatCta{display:none!important}
 .lla-float-cta .lla-cta-eyebrow{font-size:13px!important;letter-spacing:.02em!important;text-transform:none!important}
 .lla-float-cta .lla-cta-title{font-size:17px!important}
 .lla-float-cta .lla-cta-pill .price{font-size:25px!important}
@@ -52,9 +54,10 @@ html.guest-form-focused .lla-float-cta,html.guest-menu-open .lla-float-cta,body:
  html body#lpRoot#lpRoot#lpRoot #offer .masterclass-credit-strip>strong{display:none!important}
  html body#lpRoot#lpRoot#lpRoot #offer .lp-bul li{padding:16px!important}
  html body#lpRoot#lpRoot#lpRoot #offer .lp-bul li b{font-size:22px!important}
- html body#lpRoot#lpRoot#lpRoot #offer #codeInput{font-size:15px!important}
+ html body#lpRoot#lpRoot#lpRoot #offer #codeInput{font-size:16px!important}
  html body#lpRoot#lpRoot#lpRoot #offer .attendee-coupon{grid-template-columns:minmax(0,1fr) minmax(120px,.85fr)!important}
  .lla-float-cta{top:auto!important;bottom:12px!important;left:12px!important;right:12px!important}
+ html body#lpRoot#lpRoot#lpRoot #attendeeFloatCta{inset:auto 12px 12px!important;border-radius:14px!important}
  .lla-float-cta .lla-cta-title{font-size:15px!important}
  .lla-float-cta .lla-cta-text{padding:10px 12px!important}
 }
