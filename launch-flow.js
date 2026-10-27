@@ -1,9 +1,9 @@
 (function(){
  'use strict';
+ const appBase=new URL('.',document.currentScript.src);
  function enrollmentURL(){
-  const u=new URL(location.href);
-  const root=u.pathname.split('/blueprint-attendees-7q4x/')[0]+'/blueprint-attendees-7q4x/';
-  u.pathname=root+'blueprint/';u.hash='';
+  const u=new URL('blueprint/',appBase);
+  u.search=location.search;u.hash='';
   const code=document.getElementById('codeInput')?.value||window.LLA_PROMO?.code||u.searchParams.get('code')||'JULIE249';
   if(['JULIE249','MASTERCLASS-VIP'].includes(code.trim().toUpperCase()))u.searchParams.set('code',code.trim().toUpperCase());
   u.searchParams.set('plan','monthly');u.searchParams.set('enroll','1');return u.href;

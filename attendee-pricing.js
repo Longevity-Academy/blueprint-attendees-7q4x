@@ -32,7 +32,7 @@
    text('#fnExit p b','Regular tuition: $169 per month');
    const strip=$('#mockStrip');
    if(strip){const markup='<span class="t lg">Masterclass credit</span><span class="t sm"><a href="#offer" data-credit-code="JULIE249">JULIE249</a><span>or</span><a href="#offer" data-credit-code="MASTERCLASS-VIP">MASTERCLASS-VIP</a></span><a class="code" href="#offer" data-credit-code="JULIE249">JULIE249</a><a class="code" href="#offer" data-credit-code="MASTERCLASS-VIP">MASTERCLASS-VIP</a>';if(strip.innerHTML!==markup)strip.innerHTML=markup;}
-   text('#mockBar .l b','Masterclass credit');
+   text('#mockBar .l b','$79 month 1');
    const band=$('#emStep2 .em-band .b-v');
    if(band){band.setAttribute('data-no-promo','');html('#emStep2 .em-band .b-v',upfront?'$799 <small>USD one payment</small>':(active?'<s style="opacity:.65;margin-right:8px">$169</s>':'')+'$'+first+' <small>Month 1 · then 4 × $169<br>$'+total+' total</small>');}
    html('#pp [data-pl="monthly"] .pp-price','$'+first+' <small>Month 1</small>');
