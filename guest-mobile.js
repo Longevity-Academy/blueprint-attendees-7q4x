@@ -10,6 +10,31 @@
   window.visualViewport?.addEventListener('resize',viewport);
   const nav=document.getElementById('fnNav');
   if(nav&&window.ResizeObserver)new ResizeObserver(viewport).observe(nav);
+  const toggle=document.getElementById('fnNavToggle'),drawer=document.getElementById('fnDrawer'),close=document.getElementById('fnDrawerClose');
+  if(toggle&&drawer&&close){
+    let previousOverflow='';
+    drawer.setAttribute('role','dialog');drawer.setAttribute('aria-label','Site navigation');drawer.setAttribute('aria-modal','true');
+    function menu(open,returnFocus){
+      if(open)previousOverflow=document.body.style.overflow;
+      drawer.classList.toggle('is-open',open);drawer.setAttribute('aria-hidden',String(!open));
+      toggle.setAttribute('aria-expanded',String(open));root.classList.toggle('guest-menu-open',open);
+      document.body.style.overflow=open?'hidden':previousOverflow;
+      if(open)close.focus();else if(returnFocus)toggle.focus();
+    }
+    toggle.addEventListener('click',e=>{e.preventDefault();e.stopImmediatePropagation();menu(!drawer.classList.contains('is-open'),true)},true);
+    close.addEventListener('click',e=>{e.preventDefault();e.stopImmediatePropagation();menu(false,true)},true);
+    drawer.addEventListener('click',e=>{if(e.target.closest('a'))menu(false,false)});
+    addEventListener('click',e=>{if(drawer.classList.contains('is-open')&&e.target.closest('#fnDrawer a'))menu(false,false)},true);
+    drawer.addEventListener('keydown',e=>{
+      if(e.key==='Escape'){e.preventDefault();menu(false,true);}
+      if(e.key==='Tab'){
+        const focusable=[...drawer.querySelectorAll('a[href],button')].filter(el=>el.offsetHeight&&!el.disabled);
+        const first=focusable[0],last=focusable[focusable.length-1];
+        if(e.shiftKey&&document.activeElement===first){e.preventDefault();last?.focus();}
+        else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first?.focus();}
+      }
+    });
+  }
   function forms(){
     const visible=[...document.querySelectorAll('#askForm,#attAskForm,.attendee-coupon')].some(e=>{
       const r=e.getBoundingClientRect();return r.width&&r.bottom>0&&r.top<innerHeight;
