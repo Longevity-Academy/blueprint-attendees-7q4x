@@ -38,7 +38,7 @@
     });
   }
   rails();setTimeout(rails,3000);
-  const code=document.getElementById('emCode'),apply=document.getElementById('emApply');
+  const code=document.getElementById('emPromo'),apply=document.getElementById('emApply');
   if(code&&apply){
     code.setAttribute('aria-label','Coupon code');
     function coupon(){

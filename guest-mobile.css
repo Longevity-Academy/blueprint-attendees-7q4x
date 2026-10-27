@@ -13,7 +13,8 @@ header.co-head .logo .bm-v7-lockup { display: block !important; height: auto !im
 .pay-tabs .gpay-mark { display: none !important; }
 .guest-contact-consent { display: flex !important; gap: 10px; align-items: flex-start; font-size: 15px !important; }
 .guest-contact-consent input[type=checkbox] { width: 20px !important; height: 20px !important; flex: 0 0 20px; margin: 2px 0 0 !important; padding: 0 !important; }
-html.guest-coupon-applied #enrollModal .lla-jp-line { display: none !important; }
+html.guest-coupon-applied #enrollModal .lla-jp-line,
+html.guest-coupon-applied #enrollModal .mock-promo-lb { display: none !important; }
 #tgRail, .lla-slider { overscroll-behavior-x: contain; }
 #tgRail:focus-visible, .lla-slider:focus-visible { outline: 2px solid #5eb6ff; outline-offset: 4px; }
 @media(max-width:760px) {
