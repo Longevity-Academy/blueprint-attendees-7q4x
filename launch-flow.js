@@ -18,6 +18,8 @@
    if(hero.nextElementSibling!==pillars)hero.insertAdjacentElement('afterend',pillars);
    if(pillars.nextElementSibling!==syllabus)pillars.insertAdjacentElement('afterend',syllabus);
    if(syllabus.nextElementSibling!==offer)syllabus.insertAdjacentElement('afterend',offer);
+   const ask=document.getElementById('ask');
+   if(ask&&offer.nextElementSibling!==ask)offer.insertAdjacentElement('afterend',ask);
   }
   document.querySelectorAll('#hero .pdp-cine-cta,header .fn-nav-pill,#mockBar a,a').forEach(a=>{
    if(!a.matches('#hero .pdp-cine-cta,header .fn-nav-pill,#mockBar a')&&!/^enroll\s*now$/i.test(a.textContent.trim()))return;

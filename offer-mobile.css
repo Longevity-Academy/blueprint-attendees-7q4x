@@ -1,0 +1,79 @@
+/* Larger brand type, compact pricing and a benefits-first mobile purchase view. */
+html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #offer .lp-grid{align-items:start!important}
+html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #offer .lp-card{align-self:start!important;justify-content:flex-start!important;gap:20px!important;padding:28px!important}
+html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #offer .lp-plan b{font-size:34px!important;line-height:1.15!important}
+html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #offer .lp-plan span{font-size:24px!important;line-height:1.3!important}
+html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #offer .credit-month-one strong{font-size:100px!important;line-height:1.1!important}
+html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #offer .credit-month-one s{font-size:30px!important}
+html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #offer .credit-unit{font-size:25px!important}
+html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #offer .credit-rest,
+html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #offer .credit-rest b{font-size:36px!important;line-height:1.2!important}
+html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #offer .credit-total,
+html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #offer .credit-total :is(span,b){font-size:22px!important;font-weight:400!important}
+html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #offer .lp-list h3{font-size:30px!important;line-height:1.2!important;margin:0 0 14px!important}
+html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #offer .lp-bul li{padding:18px 22px!important}
+html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #offer .lp-bul li b{font-size:32px!important;line-height:1.15!important;margin:0 0 8px!important}
+html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #offer .credit-benefit-detail{font-size:25px!important;line-height:1.25!important}
+html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #offer #codeApply{font-size:23px!important;min-height:54px!important}
+html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #offer .lp-trust{font-size:18px!important;line-height:1.4!important}
+.benefit-summary,.benefit-controls{display:none}
+
+/* Exact Blueprint question-form structure, in its own section after the offer. */
+html body#lpRoot #ask{display:block!important;background:#f3f6fb!important;padding:52px 0!important;border-top:1px solid #0a224014}
+html body#lpRoot #ask .att-ask-wrap{width:min(1200px,calc(100% - 40px));margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+html body#lpRoot #ask h2{font-size:44px!important;line-height:1.12!important;margin:8px 0 20px!important}
+html body#lpRoot #ask .att-ask-text p{font:400 20px/1.5 Inter,sans-serif;color:#2b3a52;margin:0 0 16px}
+html body#lpRoot #ask .att-ask-alt a{color:#0051cc;text-decoration:underline}
+html body#lpRoot #ask .att-form{background:#fff;border-radius:22px;padding:28px;border:1px solid #0a224014;box-shadow:0 30px 70px -34px #0a22404d}
+html body#lpRoot #ask .att-form label{display:block;font:600 16px/1.4 Inter,sans-serif;color:#0b1b33;margin:0 0 14px}
+html body#lpRoot #ask .att-form input:not([type=checkbox]),html body#lpRoot #ask textarea{display:block;width:100%;margin-top:6px;border:1.5px solid #0a22402e;border-radius:12px;padding:12px 14px;font:400 18px/1.4 Inter,sans-serif;color:#0b1b33;background:#fff;box-sizing:border-box}
+html body#lpRoot #ask textarea{resize:vertical;min-height:126px}
+html body#lpRoot #ask .att-form-row.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+html body#lpRoot #ask .att-hp{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;opacity:0}
+html body#lpRoot #ask .att-privacy{font:400 14px/1.5 Inter,sans-serif;color:#52647c;margin:12px 0 0}
+html body#lpRoot #ask .att-btn{display:block;width:100%;padding:16px;border:0;border-radius:12px;background:#006eff;color:white;font:600 20px/1.2 Inter,sans-serif;cursor:pointer}
+html body#lpRoot #ask .formmsg{font:500 17px/1.5 Inter,sans-serif;color:#135730;margin-top:14px}
+html body#lpRoot #ask .formmsg.err{color:#a52222}
+
+/* Keep the reference WhatsApp component visible without overlapping Enroll now. */
+html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #et-bumpyard-widget{display:block!important;opacity:1!important;visibility:visible!important;pointer-events:auto!important;inset:auto auto 20px 20px!important;padding:0!important;z-index:10000!important;width:auto!important;height:auto!important}
+html.guest-form-focused body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #et-bumpyard-widget,
+html.guest-menu-open body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #et-bumpyard-widget,
+html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot:has(#enrollModal.open) #et-bumpyard-widget{display:none!important}
+@media(max-width:1100px){
+ html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #offer .lp-grid{display:flex!important;flex-direction:column!important;gap:22px!important;max-width:660px!important;margin:auto!important}
+ html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #offer .lp-list{order:-1!important;width:100%!important;min-width:0!important}
+ html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #offer .lp-card{width:100%!important;box-sizing:border-box!important;padding:22px!important;gap:16px!important}
+ html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #offer .lp-bul{display:grid!important;grid-template-columns:none!important;grid-template-rows:1fr!important;grid-auto-flow:column!important;grid-auto-columns:calc(100% - 28px)!important;gap:12px!important;overflow-x:auto!important;overflow-y:hidden!important;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;padding:0 0 8px!important;margin:0!important;width:100%!important}
+ #courseBenefitsRail::-webkit-scrollbar{display:none}
+ html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #offer .lp-bul li{grid-column:auto!important;scroll-snap-align:start;scroll-snap-stop:always;min-width:0!important;padding:20px!important;align-items:flex-start!important}
+ html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #offer .lp-bul li i{display:none!important}
+ html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #offer .lp-bul li b{font-size:30px!important}
+ html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #offer .credit-benefit-detail{font-size:24px!important}
+ html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #offer .lp-list h3{font-size:30px!important;margin-bottom:8px!important}
+ html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #offer .benefit-summary{display:block!important;font:italic 500 21px/1.3 'Playfair Display',Georgia,serif!important;color:#163e65!important;margin:0 0 14px!important}
+ .benefit-controls{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-top:8px;color:#12365f}
+ .benefit-controls button{width:48px;height:44px;border:1px solid #adcbea;background:#fff;color:#0051cc;border-radius:10px;font:500 25px/1 Inter,sans-serif;cursor:pointer}
+ .benefit-controls button:disabled{opacity:.35;cursor:default}
+ .benefit-controls>span{text-align:center;display:flex;gap:10px;align-items:center;font:500 15px/1.4 Inter,sans-serif}
+ .benefit-count{font-weight:700}
+ html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #offer .lp-plan b{font-size:30px!important}
+ html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #offer .lp-plan span{font-size:22px!important}
+ html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #offer .credit-month-one strong{font-size:86px!important}
+ html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #offer .credit-unit{font-size:22px!important}
+ html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #offer .credit-rest,html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #offer .credit-rest b{font-size:30px!important}
+ html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #offer .credit-total,html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #offer .credit-total :is(span,b){font-size:21px!important}
+ html body#lpRoot #ask .att-ask-wrap{grid-template-columns:1fr;gap:22px}
+ html body#lpRoot #ask h2{font-size:36px!important}
+ html body#lpRoot #ask .att-form-row.two{grid-template-columns:1fr}
+}
+@media(max-width:800px){
+ html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #attendeeFloatCta{left:84px!important;padding:6px!important;min-height:0!important;gap:0!important}
+ html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #attendeeFloatCta .lla-cta-text{display:none!important}
+ html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #attendeeFloatCta .lla-cta-pill{width:100%!important;min-height:54px!important;margin:0!important;padding:8px 12px!important;gap:8px!important;justify-content:center!important}
+ html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #attendeeFloatCta .lla-cta-pill:before{content:'Enroll now';font:600 15px/1.2 Inter,sans-serif;color:#072c4c}
+ html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #attendeeFloatCta .lla-cta-pill .price{font-size:27px!important}
+ html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #attendeeFloatCta .lla-cta-pill .mo{font-size:10px!important}
+ html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #et-bumpyard-widget{inset:auto auto 18px 12px!important}
+ html body#lpRoot #ask .att-form{padding:20px}
+}

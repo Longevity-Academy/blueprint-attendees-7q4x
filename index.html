@@ -6982,26 +6982,33 @@ var vids=r.querySelectorAll('video');if('IntersectionObserver' in window){var io
     </div>
   </div>
 </section>
-<section id="ask" class="lla-price attendee-addition"><div class="lp-wrap"><h2>Questions and <em>callbacks</em></h2><p class="lp-lead">Send your unanswered question and contact details. Our enrollment team will contact you.</p><div class="lp-grid"><div class="lp-list"><h3>Contact the enrollment team</h3><p>Ask about the course, available classes, your coupon code or masterclass access.</p><a class="lp-cta" href="https://wa.me/12015023701?text=Hi%2C%20I%20attended%20Julie%27s%20masterclass%20and%20have%20a%20question." target="_blank" rel="noopener">Message us on WhatsApp</a><p><a href="tel:+18882305110">Call +1 888 230 5110</a></p></div><div class="lp-card"><form class="form rv" id="askForm" novalidate="">
-        <div class="two">
-          <label>First name<input name="firstName" type="text" autocomplete="given-name" required="" class="em-in"></label>
-          <label>Last name<input name="lastName" type="text" autocomplete="family-name" required="" class="em-in"></label>
-        </div>
-        <div class="two">
-          <label>Email<input name="email" type="email" autocomplete="email" required="" class="em-in"></label>
-          <label>Mobile (US)<input name="phone" type="tel" autocomplete="tel" placeholder="(201) 555-0123" required="" class="em-in"></label>
-        </div>
-        <label>Your question for the enrollment team<textarea name="question" maxlength="1500" required="" placeholder="Enter your question" class="em-in"></textarea></label>
-        <div class="two">
-          <label>Best time for a callback<select name="callbackTime" class="em-in"><option value="Any time">Any time</option><option value="Morning (9am to noon)">Morning (9am to noon)</option><option value="Afternoon (noon to 5pm)">Afternoon (noon to 5pm)</option><option value="Evening (5pm to 8pm)">Evening (5pm to 8pm)</option></select></label>
-          <label>Your time zone<select name="timeZone" class="em-in"><option value="America/New_York">Eastern Time</option><option value="America/Chicago">Central Time</option><option value="America/Denver">Mountain Time</option><option value="America/Los_Angeles">Pacific Time</option><option value="America/Anchorage">Alaska Time</option><option value="Pacific/Honolulu">Hawaii Time</option></select></label>
-        </div>
-        <label class="consent"><input type="checkbox" name="contactConsent" required=""><span>I agree that the LLA enrollment team may contact me by phone or email about my question and the course.</span></label>
-        <p class="privacy-note">Please don't include medical records or sensitive health details. Read our <a href="blueprint/privacy.html">privacy policy</a>.</p>
-        <input type="text" name="website" class="hp em-in" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <button class="lp-cta" type="submit" id="askBtn">Send question and request callback</button>
-        <p class="formmsg" id="askMsg" role="status" aria-live="polite"></p>
-      </form></div></div></div></section><section class="faq pr-light lp-white lp-numbered is-light" data-lp-num="07" data-lp-kicker="Questions" id="faq">
+<section id="ask" class="att-ask" aria-label="A question Julie did not get to">
+  <div class="container att-ask-wrap">
+    <div class="att-ask-text">
+      <p class="att-kicker">Didn’t get your question answered?</p>
+      <h2 class="att-h2">A question Julie didn’t get to? Leave it here.</h2>
+      <p>Write the question you wanted to ask in the masterclass. We’ll call you back, answer it as best we can, and talk through whether the Blueprint is the right next step for you. No pressure, a real conversation.</p>
+      <p class="att-ask-alt">Prefer to text? <a href="https://wa.me/12015023701?text=Hi%2C%20I%20attended%20Julie%27s%20Longevity%20Masterclass%20and%20have%20a%20question%3A%20" target="_blank" rel="noopener">Message us on WhatsApp</a> or call <a href="tel:+18882305110">+1-888-230-5110</a>.</p>
+    </div>
+    <form class="att-form" id="attAskForm" novalidate>
+      <div class="att-form-row two">
+        <label>First name<input name="firstName" type="text" autocomplete="given-name" required></label>
+        <label>Last name<input name="lastName" type="text" autocomplete="family-name" required></label>
+      </div>
+      <div class="att-form-row two">
+        <label>Email<input name="email" type="email" autocomplete="email" required></label>
+        <label>Mobile (US)<input name="phone" type="tel" autocomplete="tel" placeholder="(201) 555-0123" required></label>
+      </div>
+      <label>Your question for Julie or the LLA team<textarea name="question" rows="4" maxlength="1500" required placeholder="What did you want to ask?"></textarea></label>
+      <input type="text" name="website" class="att-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <label class="guest-contact-consent"><input type="checkbox" name="contactConsent" required> I agree that the enrollment team may contact me by phone or email about my question and the course.</label>
+      <button class="att-btn att-btn-wide" type="submit" id="attAskBtn">Send my question</button>
+      <p class="att-msg" id="attAskMsg" role="status" aria-live="polite"></p>
+      <p class="att-privacy">We use your details only to answer your question and call you back. <a href="blueprint/privacy.html">Privacy</a>.</p>
+    </form>
+  </div>
+</section>
+<section class="faq pr-light lp-white lp-numbered is-light" data-lp-num="07" data-lp-kicker="Questions" id="faq">
   <div class="container faq-inner">
     <div class="faq-header reveal">
       <h2 class="section-title">Questions, <em>answered.</em></h2>
@@ -9053,9 +9060,9 @@ window.LLA_GOOGLE_CAMPAIGN_IDS = window.LLA_GOOGLE_CAMPAIGN_IDS || {
 <link rel="stylesheet" href="guest-mobile.css?v=20261027-mobile4">
 <script src="guest-mobile.js?v=20261027-mobile5" defer></script>
 <link rel="stylesheet" href="attendee-pricing.css?v=compact1">
-<script src="attendee-pricing.js?v=refine2" defer></script>
+<script src="attendee-pricing.js?v=slider1" defer></script>
 <link rel="stylesheet" href="launch-flow.css?v=hero5">
-<script src="launch-flow.js?v=hero4" defer></script>
+<script src="launch-flow.js?v=slider1" defer></script>
 <div id="mockStrip"><span class="t lg">Julie’s promo: <b>$149 a month</b> instead of <span data-no-promo="">$179</span>, her VIP Masterclass included. <b>You save $249</b></span><span class="t sm" onclick="mockCopy(this)"><span class="c">JULIE249</span><span>·</span><span><b>$149</b>/mo + VIP seat</span></span><span class="code" onclick="mockCopy(this)">JULIE249</span><span class="cd" data-cd="">00d 00h 00m 00s</span></div><div id="mockBar"><div class="l"><i>The Longevity Blueprint</i><b>$179<small>/ mo</small></b></div><a href="#offer" data-fn-cta="floater">Enroll Now</a></div><script src="exact-attendee-copy.js?v=space1"></script><script src="attendee-form.js?v=guest-flow-20261027b"></script>  <!-- Global Floating Enroll CTA -->
   <style id="main-site-floater-design">
     .lla-float-cta{
@@ -9137,5 +9144,7 @@ window.LLA_GOOGLE_CAMPAIGN_IDS = window.LLA_GOOGLE_CAMPAIGN_IDS || {
 <link rel="stylesheet" href="pricing-clarity.css?v=clarity1">
 <link rel="stylesheet" href="pricing-replica.css?v=refine2">
 <link rel="stylesheet" href="brand-typography.css?v=brand1">
+<link rel="stylesheet" href="offer-mobile.css?v=slider1">
+<script src="offer-mobile.js?v=slider1" defer></script>
 <script src="blueprint-timezones.js?v=202611-est-pst" defer></script>
 </body></html>
