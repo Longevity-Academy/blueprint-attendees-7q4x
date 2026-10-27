@@ -14,20 +14,20 @@
    all('#offer .lp-plan').forEach(e=>e.classList.add('credit-plan-label'));
    const price=$('#offer .lp-big');
    if(price){price.className='lp-big credit-month-one';price.setAttribute('data-no-promo','');price.setAttribute('data-credit-price','');}
-   html('#offer .credit-month-one','<span class="credit-period">Month 1</span><div class="credit-amount"><s aria-label="Regular first payment">$169</s><strong>$79</strong></div><span class="credit-unit">First payment</span>');
+   html('#offer .credit-month-one','<div class="credit-amount"><s aria-label="Regular first payment">$169</s><strong>$79</strong><span class="credit-unit">first month</span></div>');
    const totalEl=$('#offer .lp-total');
    if(totalEl){
     totalEl.classList.add('credit-total');totalEl.setAttribute('data-no-promo','');
     if(!$('#offer .credit-rest'))totalEl.insertAdjacentHTML('beforebegin','<div class="credit-rest" data-no-promo></div>');
-    html('#offer .credit-rest','<span class="credit-period">Months 2–5</span><div class="credit-amount"><b>$169</b></div><span class="credit-unit">Per month · 4 payments</span>');
+    html('#offer .credit-rest','Then <b>$169/month</b> for 4 months');
     html('#offer .lp-total','<span>Total tuition</span><b>$755</b>');
     if(!$('#offer .masterclass-credit-strip'))totalEl.insertAdjacentHTML('afterend','<div class="masterclass-credit-strip" data-no-promo><strong>Masterclass credit</strong><div class="credit-codes"><button type="button" data-credit-code="JULIE249">JULIE249</button><button type="button" data-credit-code="MASTERCLASS-VIP">MASTERCLASS-VIP</button></div></div>');
    }
    text('#codeApply','Enroll now');
    all('#offer .lp-lead').forEach(e=>e.remove());
    all('#faq .faq-item').forEach(e=>{if(/How much does it cost/i.test(e.querySelector('.faq-q')?.textContent||'')){const a=e.querySelector('.faq-a-inner');const t='With JULIE249 or MASTERCLASS-VIP: $79 in month 1, then four monthly payments of $169. Total tuition: $755.';if(a&&a.textContent!==t)a.textContent=t}});
-   const benefits=[['18 live classes','50 minutes on Zoom each week. Recordings and learning platform included.'],['Six longevity pillars','Nutrition, sleep, movement, supplements, stress and your personal protocol.'],['Julie Gibson Clark','Her live longevity masterclass is included with the course.'],['Abbott Lingo CGM','Glucose sensor and app, shipped to your door. Included in tuition.'],['Your personal Blueprint','A written longevity protocol built on your own numbers by week 18.']];
-   all('#offer .lp-bul li').forEach((li,i)=>{const span=li.querySelector('span'),item=benefits[i];if(span&&item){const v='<b>'+item[0]+'</b><span class="credit-benefit-detail">'+item[1]+'</span>';if(span.innerHTML!==v)span.innerHTML=v}});
+   const benefits=[['18 live classes','50 minutes on Zoom each week. Recordings and learning platform included.'],['Six longevity pillars','Nutrition, sleep, movement, supplements, stress and your personal protocol.'],['Abbott Lingo CGM','Glucose sensor and app, shipped to your door. Included in tuition.'],['Your personal Blueprint','A written longevity protocol built on your own numbers by week 18.']];
+   all('#offer .lp-bul li').forEach((li,i)=>{const span=li.querySelector('span'),item=benefits[i];if(!item){li.remove();return}if(span){const v='<b>'+item[0]+'</b><span class="credit-benefit-detail">'+item[1]+'</span>';if(span.innerHTML!==v)span.innerHTML=v}});
    text('#offer .lp-list h3','Included with your course');
    html('.att-price','<span class="att-big">$79</span><span class="att-unit">Month 1<br><s>$169</s></span>');
    html('.att-line','Then 4 monthly payments of $169. <b>$755 total.</b> Masterclass credit applied to month 1.');
