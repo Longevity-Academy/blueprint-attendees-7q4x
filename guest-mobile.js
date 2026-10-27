@@ -49,6 +49,8 @@
     }
     code.addEventListener('input',coupon);
     apply.addEventListener('click',()=>setTimeout(coupon,0));
+    const modal=document.getElementById('enrollModal');
+    if(modal)new MutationObserver(coupon).observe(modal,{attributes:true,attributeFilter:['class'],subtree:true});
     coupon();setTimeout(coupon,2000);
   }
 })();
