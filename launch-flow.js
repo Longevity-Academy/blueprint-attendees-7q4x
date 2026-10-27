@@ -19,7 +19,9 @@
    if(pillars.nextElementSibling!==syllabus)pillars.insertAdjacentElement('afterend',syllabus);
    if(syllabus.nextElementSibling!==offer)syllabus.insertAdjacentElement('afterend',offer);
    const ask=document.getElementById('ask');
-   if(ask&&offer.nextElementSibling!==ask)offer.insertAdjacentElement('afterend',ask);
+   const inclusions=document.getElementById('whatitis');
+   const askAnchor=inclusions&&(offer.compareDocumentPosition(inclusions)&Node.DOCUMENT_POSITION_FOLLOWING)?inclusions:offer;
+   if(ask&&askAnchor.nextElementSibling!==ask)askAnchor.insertAdjacentElement('afterend',ask);
   }
   document.querySelectorAll('#hero .pdp-cine-cta,header .fn-nav-pill,#mockBar a,a').forEach(a=>{
    if(!a.matches('#hero .pdp-cine-cta,header .fn-nav-pill,#mockBar a')&&!/^enroll\s*now$/i.test(a.textContent.trim()))return;
