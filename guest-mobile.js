@@ -1,10 +1,26 @@
 (function(){
   'use strict';
   const root=document.documentElement;
+  let focusTimer;
+  function keepFieldVisible(){
+    clearTimeout(focusTimer);
+    focusTimer=setTimeout(()=>{
+      const field=document.activeElement;
+      if(!field?.matches('input:not([type=checkbox]),textarea,select')||!field.offsetHeight)return;
+      if(!field.closest('#enrollModal.open,#askForm,#attAskForm,.attendee-coupon'))return;
+      field.scrollIntoView({block:'center',inline:'nearest',behavior:'instant'});
+      if(!field.closest('#enrollModal')){
+        const top=Number.parseFloat(root.style.getPropertyValue('--guest-nav-height'))+56;
+        const r=field.getBoundingClientRect();
+        if(r.top<top)window.scrollBy({top:r.top-top,behavior:'instant'});
+      }
+    },80);
+  }
   function viewport(){
     const nav=document.getElementById('fnNav');
     if(nav)root.style.setProperty('--guest-nav-height',Math.ceil(nav.getBoundingClientRect().height)+'px');
     root.style.setProperty('--guest-viewport-height',(window.visualViewport?.height||innerHeight)+'px');
+    keepFieldVisible();
   }
   viewport();addEventListener('resize',viewport);
   window.visualViewport?.addEventListener('resize',viewport);
@@ -42,7 +58,7 @@
     root.classList.toggle('guest-form-visible',visible);
   }
   addEventListener('scroll',forms,{passive:true});addEventListener('resize',forms);forms();
-  document.addEventListener('focusin',e=>root.classList.toggle('guest-form-focused',!!e.target.closest('input,textarea,select')));
+  document.addEventListener('focusin',e=>{root.classList.toggle('guest-form-focused',!!e.target.closest('input,textarea,select'));if(innerWidth<=760)keepFieldVisible()});
   document.addEventListener('focusout',()=>setTimeout(()=>root.classList.toggle('guest-form-focused',!!document.activeElement?.closest('input,textarea,select')),0));
   if(!document.getElementById('skills')){
     const section=document.getElementById('learn-com');
