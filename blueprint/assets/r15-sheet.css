@@ -60,7 +60,7 @@ html body#lpRoot #enrollModal .mock-footer .mock-hint { margin: 10px 0 0 !import
   html body#lpRoot #enrollModal #dpTabs { margin-bottom: 8px !important; }
   html body#lpRoot #enrollModal .dp-tab { padding: 8px 10px !important; font-size: 15px !important; }
   html body#lpRoot #enrollModal .em-steps { padding-right: 52px !important; }
-  html body#lpRoot #enrollModal .dp-alt { display: none !important; }
+  html body#lpRoot #enrollModal .dp-alt { display: block !important; }
   html body#lpRoot #enrollModal .dp-check { position: absolute !important; top: 10px !important; right: 10px !important; width: 18px !important; height: 18px !important; margin: 0 !important; }
   html body#lpRoot #enrollModal .dp-seats,
   html body#lpRoot #enrollModal .dp-late { font-size: 11.5px !important; padding: 2px 7px !important; margin-top: 4px !important; }
@@ -90,3 +90,5 @@ html body#lpRoot #enrollModal .mock-footer .mock-hint { margin: 10px 0 0 !import
 /* one Continue per screen */
 html body#lpRoot #enrollModal #emStep1.on ~ .mock-footer #emGo2,
 html body#lpRoot #enrollModal #emStep2.on ~ .mock-footer #emGo1 { display: none !important; }
+
+@media(max-width:900px){html body#lpRoot #enrollModal .dp-card{min-height:104px!important;height:auto!important}html body#lpRoot #enrollModal .dp-alt{display:block!important;line-height:1.35!important;margin-top:4px!important}}
