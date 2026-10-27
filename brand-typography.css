@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500;1,600;1,700&display=swap');
+
+:root{--font-display:'Playfair Display',Georgia,serif}
+html body :is(h1,h2,h3,h4,h5,h6,.section-title,.pp-brand,.t-val,.done h1){
+ font-family:'Playfair Display',Georgia,serif!important;font-style:italic!important;font-weight:500!important;
+}
+/* Override the legacy captured source's display-type specificity, not its form hooks. */
+html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot :is(
+ h1,h2,h3,h4,h5,h6,.section-title,.topic-v2-title,.lp-plan b,.lp-plan span,
+ .lp-bul li b,.credit-benefit-detail,.credit-month-one strong,.credit-month-one s,
+ .credit-rest,.credit-rest b,.credit-unit,.credit-total,.credit-total span,.credit-total b,
+ .lla-cta-title,.lla-cta-pill .price,.pdp-cine-cta,.lp-cta,.em-h2-sober
+){
+ font-family:'Playfair Display',Georgia,serif!important;font-style:italic!important;
+}
+html body#lpRoot#lpRoot#lpRoot#lpRoot #offer :is(.lp-plan b,.lp-bul li b,.credit-month-one strong,.credit-rest b){font-weight:500!important}
+html body#lpRoot#lpRoot#lpRoot#lpRoot #offer .lp-bul li b{font-size:26px!important;line-height:1.2!important}
+html body#lpRoot#lpRoot#lpRoot#lpRoot #offer .credit-benefit-detail{font-size:19px!important;line-height:1.45!important}
+html body#lpRoot#lpRoot#lpRoot#lpRoot #offer .lp-grid{align-items:stretch!important}
+html body#lpRoot#lpRoot#lpRoot#lpRoot #offer .lp-list{display:flex!important;flex-direction:column!important;align-self:stretch!important}
+html body#lpRoot#lpRoot#lpRoot#lpRoot #offer .lp-bul{flex:1!important;display:grid!important;grid-auto-rows:1fr!important}
+html body#lpRoot#lpRoot#lpRoot#lpRoot #offer .lp-bul li{height:auto!important;min-height:0!important;align-items:center!important}
+/* Restore the supplied pages.dev card surface rather than the custom beveled card. */
+html body#lpRoot#lpRoot#lpRoot#lpRoot #offer .lp-card{
+ align-self:stretch!important;justify-content:space-between!important;
+ background:radial-gradient(130% 110% at 100% 0%,#0f3f96 0%,#08224f 48%,#050f26 100%)!important;
+ box-shadow:0 60px 110px -50px #00328c8c,0 0 0 1px #5eb6ff47,0 0 60px -10px #006eff47!important;
+ border-radius:28px!important;
+}
+@media(max-width:800px){
+ html body#lpRoot#lpRoot#lpRoot#lpRoot #offer .lp-card{justify-content:flex-start!important}
+ html body#lpRoot#lpRoot#lpRoot#lpRoot #offer .lp-bul li b{font-size:25px!important}
+}
