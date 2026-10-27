@@ -514,8 +514,8 @@ html.lla-vip-eligible .lla-vip-ck{display:grid!important}
           <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#3DDC97" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
           <div>
             <div class="t-lbl" id="heroTuitionLbl">Course tuition fee</div>
-            <div class="t-val" id="heroTuitionVal"><s>$279</s>$179 monthly for 5 months<span class="t-off">36% OFF</span></div>
-            <div class="t-sub" id="heroTuitionSub">$895 total instead of $1,395</div>
+            <div class="t-val" id="heroTuitionVal">Confirming tuition</div>
+            <div class="t-sub" id="heroTuitionSub">Your order determines the payment schedule.</div>
           </div>
         </div>
         <script>
@@ -538,12 +538,12 @@ html.lla-vip-eligible .lla-vip-ck{display:grid!important}
             band.setAttribute('data-plan', p);
             if (p === 'upfront'){
               lbl.textContent = 'Course tuition fee, pay upfront';
-              val.innerHTML   = '<s>$1,395</s>$799 one payment<span class="t-off">43% OFF</span>';
+              val.textContent = 'Confirming tuition';
               sub.innerHTML  = 'Save $596 vs list &middot; $96 vs monthly';
             } else {
               lbl.textContent = 'Course tuition fee, pay monthly';
-              val.innerHTML   = '<s>$279</s>$179 monthly for 5 months<span class="t-off">36% OFF</span>';
-              sub.textContent = '$895 total instead of $1,395';
+              val.textContent = 'Confirming tuition';
+              sub.textContent = 'Your order determines the payment schedule.';
             }
           })();
         </script>
@@ -611,13 +611,13 @@ html.lla-vip-eligible .lla-vip-ck{display:grid!important}
       <div class="sum">
         <div class="sum-row" id="sumRow1">
           <span class="k" id="sumRow1K">Course registration fee <span class="tip" title="Charged today to reserve your seat.">?</span></span>
-          <span class="v" id="sumRow1V"><s style="opacity:.5;font-weight:500;margin-right:6px">$279.00</s>$179.00</span>
+          <span class="v" id="sumRow1V">Confirming</span>
         </div>
         <p class="sum-note" id="sumNote1">Fully refundable within 14 days from registration.</p>
 
         <div class="sum-row" id="sumRow2">
           <span class="k">Monthly tuition fee <span class="tip" title="Billed monthly after your first class.">?</span></span>
-          <span class="v" id="sumRow2V"><s style="opacity:.5;font-weight:500;margin-right:6px">4 x $279.00</s>4 x $179.00</span>
+          <span class="v" id="sumRow2V">Confirming</span>
         </div>
         <p class="sum-note" id="sumNote2">Monthly payments begin the month after your first class.</p>
         <script>
@@ -674,8 +674,8 @@ html.lla-vip-eligible .lla-vip-ck{display:grid!important}
   window.LLA_ECOMM_CONFIG.workerBase = 'https://eteacher-leads-proxy.gitter-omri.workers.dev';
 </script>
 <script src="https://checkout.airwallex.com/assets/elements.bundle.min.js?version=1.160.0"></script>
-<script src="assets/lla-promo.js?v=r17"></script>
-<script src="assets/eteacher-ecomm.js?v=guest-flow-20261027b"></script>
+<script src="assets/lla-promo.js?v=credit79-1"></script>
+<script src="assets/eteacher-ecomm.js?v=credit79-1"></script>
 <script>
 document.querySelectorAll('.pay-tab').forEach(function(t){
   t.addEventListener('click',function(){
@@ -980,8 +980,8 @@ async function initAirwallex(){
      * after the gateway confirms the payment. */
 
     /* CRM NumOfPayments counts REMAINING installments after today's payment. */
-    var LIST_PER_MONTH = 179;
-    var LIST_TOTAL     = 895;
+    var LIST_PER_MONTH = Number(amount)===79 || Number(amount)===169 ? 169 : 179;
+    var LIST_TOTAL     = LIST_PER_MONTH * 5;
     var strike = function(txt){ return '<s style="opacity:.5;font-weight:500;margin-right:6px">' + txt + '</s>'; };
     // The verified order, not a stale plan in this browser, controls payment
     // mode and summary. Particularly important for emailed/cross-device orders.
@@ -999,7 +999,7 @@ async function initAirwallex(){
     }
     var num  = Number(d.NumOfPayments);
     document.documentElement.classList.toggle('lla-vip-eligible',
-      !!(window.LLA_PROMO && window.LLA_PROMO.active && plan === 'monthly' && num === 4 && Number(amount) === 149 && _cur === 'USD'));
+      !!(window.LLA_PROMO && window.LLA_PROMO.active && plan === 'monthly' && num === 4 && [79,149].includes(Number(amount)) && _cur === 'USD'));
     if (plan === 'upfront' || num === 0){
       if (ks[0]) ks[0].firstChild.nodeValue = 'One-time course tuition ';
       if (vs[0]) vs[0].innerHTML = strike('$' + LIST_TOTAL + '.00') + '$' + amount.toFixed(2);
@@ -1008,7 +1008,7 @@ async function initAirwallex(){
       if (notes[0]) notes[0].textContent = 'Single payment. Full refund inside 14 days from registration.';
       if (notes[1]) notes[1].style.display = 'none';
     } else {
-      if (ks[0]) ks[0].firstChild.nodeValue = 'Course registration fee ';
+      if (ks[0]) ks[0].firstChild.nodeValue = 'Month 1 ';
       if (rows[1]) rows[1].style.display = '';
       var monthlyNotes = document.querySelectorAll('.sum-note');
       if (monthlyNotes[0]) monthlyNotes[0].textContent = 'Fully refundable within 14 days from registration.';
@@ -1017,11 +1017,13 @@ async function initAirwallex(){
       if (vs[0]) vs[0].innerHTML = (discounted ? strike('$' + LIST_PER_MONTH + '.00') : '') + '$' + amount.toFixed(2);
       if (vs[1]) {
         var rest = num;
-        vs[1].innerHTML = (discounted ? strike(rest + ' x $' + LIST_PER_MONTH + '.00') : '') + rest + ' x $' + Number(expectedQuote.paymentPerMonth).toFixed(2);
+        vs[1].innerHTML = (Number(expectedQuote.paymentPerMonth)<LIST_PER_MONTH ? strike(rest + ' x $' + LIST_PER_MONTH + '.00') : '') + rest + ' x $' + Number(expectedQuote.paymentPerMonth).toFixed(2);
       }
     }
     var totalNote = document.querySelector('.sum-note');
     if (totalNote) totalNote.textContent += ' Total tuition: $' + Number(expectedQuote.total).toFixed(2) + ' USD.';
+    var planLabel=document.querySelector('#planSummary .ps-v');
+    if(planLabel)planLabel.innerHTML=plan==='upfront'?'$'+Number(amount).toFixed(2)+' <small>One payment</small>':'$'+Number(amount).toFixed(2)+' <small>Month 1 · then '+num+' × $'+Number(expectedQuote.paymentPerMonth).toFixed(2)+' · $'+Number(expectedQuote.total).toFixed(2)+' total</small>';
 
     // The elements.bundle.min.js from checkout.airwallex.com attaches window.Airwallex directly.
     var awx = window.Airwallex;
@@ -1175,7 +1177,7 @@ if (window.LLA_ECOMM && window.LLA_ECOMM.config && window.LLA_ECOMM.config.mode 
   if(p!=='monthly'&&p!=='upfront'){try{p=sessionStorage.getItem('lla_plan')||localStorage.getItem('lla_plan')}catch(e){}}
   if(p!=='monthly'&&p!=='upfront')p='monthly';
   var w=document.createElement('div');w.id='planSummary';
-  w.innerHTML='<div class="ps-box"><div><div class="ps-k">Your plan</div><div class="ps-v">'+(p==='upfront'?'Pay upfront &middot; $799<small>one payment</small>':'Pay monthly &middot; $179<small>x 5 months &middot; $895 total</small>')+'</div></div>'+(p==='upfront'?'<span class="ps-tag">You save $96</span>':'')+'</div>';
+  w.innerHTML='<div class="ps-box"><div><div class="ps-k">Your plan</div><div class="ps-v">Confirming your payment schedule</div></div></div>';
   var anchor=document.getElementById('demoBanner');
   if(anchor&&anchor.parentNode){anchor.parentNode.insertBefore(w,anchor.nextSibling);}else{document.body.insertBefore(w,document.body.firstChild);}
 }catch(e){}})();

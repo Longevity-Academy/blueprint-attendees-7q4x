@@ -42,9 +42,9 @@ var BLUEPRINT_CLASSES = [{"courseId":170275,"semesterId":2395,"start":"2026-11-2
    *   list 279.80/mo, 1399.00 total  ->  179.00/mo, 895.00 total  = 36% off
    *   LeftToPay = 4 x 179.00 = 716.00 */
   CFG.crmPrice = CFG.crmPrice || {};
-  if (CFG.crmPrice.firstPayment     == null) CFG.crmPrice.firstPayment     = 179;
+  if (CFG.crmPrice.firstPayment     == null) CFG.crmPrice.firstPayment     = 169;
   if (CFG.crmPrice.numberOfPayments == null) CFG.crmPrice.numberOfPayments = 5;
-  if (CFG.crmPrice.leftToPay        == null) CFG.crmPrice.leftToPay        = 716;
+  if (CFG.crmPrice.leftToPay        == null) CFG.crmPrice.leftToPay        = 676;
 
   /* Two-plan offer, Sep 9 2026. Monthly and Upfront against the SAME course.
    *   monthly = 5 x $179  = $895 total (36% off $1,395 list)
@@ -52,7 +52,7 @@ var BLUEPRINT_CLASSES = [{"courseId":170275,"semesterId":2395,"start":"2026-11-2
    * Verified staging Sep 9 2026: order 8017410, student 11638211,
    * Airwallex intent int_sgpvzggzxhm4mqvafja, amount 799 USD, catalogue untouched. */
   CFG.crmPlans = CFG.crmPlans || {
-    monthly: { firstPayment: 179, numberOfPayments: 5, leftToPay: 716 },
+    monthly: { firstPayment: 169, numberOfPayments: 5, leftToPay: 676 },
     upfront: { firstPayment: 799, numberOfPayments: 1, leftToPay: 0   }
   };
   function resolvePlan(){
@@ -404,6 +404,8 @@ var BLUEPRINT_CLASSES = [{"courseId":170275,"semesterId":2395,"start":"2026-11-2
       // installment schedule. The gateway and CRM amount are checked separately.
       var promo = window.LLA_PROMO || {};
       var allowed = [
+        { firstPayment: 79, numberOfPayments: 4, leftToPay: 676 },
+        { firstPayment: 169, numberOfPayments: 4, leftToPay: 676 },
         { firstPayment: 179, numberOfPayments: 4, leftToPay: 716 },
         { firstPayment: 799, numberOfPayments: 0, leftToPay: 0 },
         { firstPayment: 799, numberOfPayments: 1, leftToPay: 0 },
