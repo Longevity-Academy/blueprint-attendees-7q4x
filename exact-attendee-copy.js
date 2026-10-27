@@ -22,7 +22,7 @@
   html('#hero h1','The Longevity <span class="pdp-cine-blue">Blueprint</span>');
   html('#hero .pdp-cine-sub','Master the six pillars of longevity through <strong>18 live classes</strong>, practical exercises and your own health data.');
   text('#hero figcaption span','Founding Faculty, Longevity Life Academy');
-  const heroCTA=document.querySelector('#hero .pdp-cine-cta');if(heroCTA){heroCTA.href='#learn-com';heroCTA.innerHTML='Explore the six pillars';}
+  const heroCTA=document.querySelector('#hero .pdp-cine-cta');if(heroCTA){heroCTA.href='#offer';heroCTA.dataset.enrollCourse='1';heroCTA.innerHTML='Enroll now';}
   document.querySelectorAll('#learn-com .topic-v2-desc').forEach((p,i)=>{if(descriptions[i])p.textContent=descriptions[i]});
   html('#included h2','What the course <em>includes</em>');
   html('#cgm h2','Abbott Lingo sensor <em>and app</em>');
@@ -51,9 +51,9 @@
    if(/How much does it cost/i.test(item.textContent)){const answer=item.querySelector('.faq-a-inner');if(answer)answer.textContent='Regular tuition is $169 per month for five months, $845 total. Apply JULIE249 or MASTERCLASS-VIP for a $90 masterclass credit: $79 in month 1, then four monthly payments of $169. Total: $755.'}
   });
   const strip=document.getElementById('mockStrip');if(strip)strip.innerHTML='<span class="t lg">Use your masterclass coupon code</span><span class="t sm"><a href="#offer" data-coupon="JULIE249">JULIE249</a><span>or</span><a href="#offer" data-coupon="MASTERCLASS-VIP">MASTERCLASS-VIP</a></span><a class="code" href="#offer" data-coupon="JULIE249">JULIE249</a><a class="code" href="#offer" data-coupon="MASTERCLASS-VIP">MASTERCLASS-VIP</a>';
-  const bar=document.getElementById('mockBar');if(bar){const price=bar.querySelector('.l b');if(price)price.textContent='Masterclass attendees';const a=bar.querySelector('a');if(a){a.href='#ask';a.textContent='Request a callback'}}
+  const bar=document.getElementById('mockBar');if(bar){const price=bar.querySelector('.l b');if(price)price.textContent='$79 month 1';const a=bar.querySelector('a');if(a){a.href='#offer';a.dataset.enrollCourse='1';a.textContent='Enroll now'}}
   document.querySelectorAll('a[href*="checkout.html"]').forEach(a=>{a.href='#offer';a.removeAttribute('data-plan')});
-  document.querySelectorAll('header a[href="#offer"]').forEach(a=>a.textContent='Course offer');
+  document.querySelectorAll('header a[href="#offer"]').forEach(a=>{a.textContent='Enroll now';a.dataset.enrollCourse='1'});
   // The captured source places this initializer before the carousel markup.
   // Run the original one-card scroll behavior after that markup exists.
   const rail=document.getElementById('tgRail');
