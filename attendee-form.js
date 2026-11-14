@@ -9,7 +9,9 @@
   function go(){var code=(inp.value||'').trim().toUpperCase().replace(/\s+/g,'');
     if(!code){say('Type the code from the chat, or the one in your VIP email.',1);inp.focus();document.getElementById('offer').scrollIntoView({behavior:'smooth',block:'center'});return}
     if(!CODES[code]){say('That code is not valid. Use the code Courtney shared in the Zoom chat, or the one in your VIP email.',1);inp.classList.remove('ok');document.getElementById('offer').scrollIntoView({behavior:'smooth',block:'center'});return}
-    if(Date.now()>Date.parse('2026-10-28T23:59:59-04:00')){say('The attendee offer window has ended. Please ask our team about the current course offer.',1);return}
+    /* The shared promo contract is the only expiry authority. Do not retain a
+       separate October-session cutoff in this fallback/keyboard path. */
+    if(!window.LLA_PROMO||!window.LLA_PROMO.isValid(code)){say('The attendee offer window has ended. Please ask our team about the current course offer.',1);return}
     inp.classList.add('ok');say('Code '+code+' applied. Opening secure enrollment.');
     try{sessionStorage.setItem('lla_promo_code',code)}catch(e){}
     var enrollment=new URL('blueprint/',location.href);
