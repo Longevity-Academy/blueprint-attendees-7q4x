@@ -77,3 +77,16 @@ html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot:has(#enrollModal.open) #et-bumpyard
  html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #et-bumpyard-widget{inset:auto auto 18px 12px!important}
  html body#lpRoot #ask .att-form{padding:20px}
 }
+
+/* Event-day correction: upright offer headings/benefits only; pricing is locked. */
+html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #offer :is(.lp-list,.lp-list *,.lp-wrap>h2,.lp-wrap>h2 *){
+ font-style:normal!important;
+}
+@media(min-width:1101px){
+ html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #offer .lp-grid{align-items:stretch!important}
+ html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #offer .lp-list{contain:size;min-height:0!important}
+ html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #offer .lp-bul{min-height:0!important;grid-auto-rows:minmax(0,1fr)!important;margin:0!important}
+ html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #offer .lp-bul li{padding:10px 20px!important}
+ html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #offer .lp-bul li b{font-size:26px!important;line-height:1.2!important;margin-bottom:4px!important}
+ html body#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot#lpRoot #offer .credit-benefit-detail{font-size:20px!important;line-height:1.25!important}
+}
