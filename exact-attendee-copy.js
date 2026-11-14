@@ -32,7 +32,7 @@
   text('#offer .lp-big b','79');text('#offer .lp-saverow s','$169 / month');
   text('#offer .lp-pill','Masterclass credit');
   html('#offer .lp-total','<span>$755 total tuition</span>');
-  text('#codeApply','Apply code and enroll');
+  text('#codeApply','Enroll now');
   text('#offer .lp-julie-t b','Masterclass attendee code');
   html('#offer .lp-trust','<b>Full refund within 14 days of registration.</b> Questions? Call +1-888-230-5110.');
   html('#syllabus h2','The 18-class <em>syllabus</em>');
@@ -50,7 +50,7 @@
   document.querySelectorAll('#faq .faq-item').forEach(item=>{
    if(/How much does it cost/i.test(item.textContent)){const answer=item.querySelector('.faq-a-inner');if(answer)answer.textContent='With JULIE249 or MASTERCLASS-VIP: $79 in month 1, then four monthly payments of $169. Total tuition: $755.'}
   });
-  const strip=document.getElementById('mockStrip');if(strip)strip.innerHTML='<span class="t lg">Use your masterclass coupon code</span><span class="t sm"><a href="#offer" data-coupon="JULIE249">JULIE249</a><span>or</span><a href="#offer" data-coupon="MASTERCLASS-VIP">MASTERCLASS-VIP</a></span><a class="code" href="#offer" data-coupon="JULIE249">JULIE249</a><a class="code" href="#offer" data-coupon="MASTERCLASS-VIP">MASTERCLASS-VIP</a>';
+  const strip=document.getElementById('mockStrip');if(strip)strip.innerHTML='<span class="t lg">Masterclass credit</span><span class="t sm"><a href="#offer" data-coupon="JULIE249">JULIE249</a><span>or</span><a href="#offer" data-coupon="MASTERCLASS-VIP">MASTERCLASS-VIP</a></span><a class="code" href="#offer" data-coupon="JULIE249">JULIE249</a><a class="code" href="#offer" data-coupon="MASTERCLASS-VIP">MASTERCLASS-VIP</a>';
   const bar=document.getElementById('mockBar');if(bar){const price=bar.querySelector('.l b');if(price)price.textContent='$79 month 1';const a=bar.querySelector('a');if(a){a.href='#offer';a.dataset.enrollCourse='1';a.textContent='Enroll now'}}
   document.querySelectorAll('a[href*="checkout.html"]').forEach(a=>{a.href='#offer';a.removeAttribute('data-plan')});
   document.querySelectorAll('header a[href="#offer"]').forEach(a=>{a.textContent='Enroll now';a.dataset.enrollCourse='1'});
