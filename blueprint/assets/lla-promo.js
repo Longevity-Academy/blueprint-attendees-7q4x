@@ -12,12 +12,13 @@
  function remember(v){try{sessionStorage.setItem(KEY,v);localStorage.setItem(KEY,JSON.stringify({code:v,ts:Date.now()}))}catch{}}
  const initial=valid(q.get('code'))?normalize(q.get('code')):valid(stored())?normalize(stored()):'JULIE249';
  const P=window.LLA_PROMO={
-  code:initial,vipCode:CODES[1],codes:CODES.slice(),active:q.get('promo')!=='off'&&(valid(q.get('code'))||valid(stored())||q.get('promo')==='on'),
+  code:initial,vipCode:CODES[1],codes:CODES.slice(),active:q.get('promo')!=='off'&&valid(initial)&&(valid(q.get('code'))||valid(stored())||q.get('promo')==='on'),
   deadline:DEADLINE,first:79,n:5,left:676,total:755,regular:169,regularTotal:845,list:845,monthly:169,credit:90,
   isValid:valid,remaining(){let d=Math.max(0,Date.parse(DEADLINE)-Date.now());return{d:Math.floor(d/864e5),h:Math.floor(d%864e5/36e5),m:Math.floor(d%36e5/6e4)}},
   activate(v){
-   if(v!==undefined&&!valid(v))return false;
-   if(valid(v))P.code=normalize(v);else if(valid(stored()))P.code=normalize(stored());
+   const candidate=v!==undefined?normalize(v):valid(stored())?normalize(stored()):P.code;
+   if(!valid(candidate))return false;
+   P.code=normalize(candidate);
    P.active=true;remember(P.code);configure();notify();return true;
   },
   deactivate(){P.active=false;try{sessionStorage.removeItem(KEY);localStorage.removeItem(KEY)}catch{}configure();notify();return true;},
