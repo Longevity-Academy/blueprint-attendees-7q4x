@@ -564,6 +564,56 @@ html.lla-vip-eligible .lla-vip-ck{display:grid!important}
         <div class="pay-body">
           <!-- Google Pay: rendered by the Airwallex Drop-In itself (googlepay method), not a site-level button. -->
 
+          <!-- CGM address control: same browser-persisted component as the main checkout. -->
+          <style>
+            #llaAddress{margin-bottom:18px}
+            #llaAddress .lla-addr-grid{display:grid;gap:10px}
+            #llaAddress .lla-addr-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+            #llaAddress .input{box-sizing:border-box;width:100%;min-width:0;padding:12px;border:1px solid #D5DCE6;border-radius:7px;background:#fff;font:14px Arial,sans-serif;color:#172438}
+            #llaAddress .lla-ship-same{display:flex;align-items:flex-start;gap:9px;margin:12px 0 0;font:14.5px/1.4 Arial,sans-serif;color:#172438;cursor:pointer}
+            #llaAddress .lla-ship-same input{width:18px;height:18px;margin:1px 0 0;flex:none;accent-color:#006EFF}
+            #llaAddress .lla-ship-alt{margin-top:14px}
+            #llaAddress .lla-ship-alt[hidden]{display:none!important}
+          </style>
+          <div id="llaAddress">
+            <div class="f-lbl">Billing address</div>
+            <div class="lla-addr-grid">
+              <input class="input" type="text" id="billStreet" autocomplete="billing street-address" placeholder="Street address" aria-label="Billing street address">
+              <input class="input" type="text" id="billCity" autocomplete="billing address-level2" placeholder="City" aria-label="Billing city">
+              <div class="lla-addr-row">
+                <input class="input" type="text" id="billState" autocomplete="billing address-level1" placeholder="State" aria-label="Billing state">
+                <input class="input" type="text" id="billZip" autocomplete="billing postal-code" placeholder="ZIP" aria-label="Billing ZIP code">
+              </div>
+            </div>
+            <label class="lla-ship-same"><input type="checkbox" id="shipSame" checked><span>Ship CGM sensor to my billing address</span></label>
+            <div class="lla-ship-alt" id="shipAlt" hidden>
+              <div class="f-lbl">Shipping address for your CGM sensor</div>
+              <div class="lla-addr-grid">
+                <input class="input" type="text" id="shipStreet" autocomplete="shipping street-address" placeholder="Street address" aria-label="Shipping street address">
+                <input class="input" type="text" id="shipCity" autocomplete="shipping address-level2" placeholder="City" aria-label="Shipping city">
+                <div class="lla-addr-row">
+                  <input class="input" type="text" id="shipState" autocomplete="shipping address-level1" placeholder="State" aria-label="Shipping state">
+                  <input class="input" type="text" id="shipZip" autocomplete="shipping postal-code" placeholder="ZIP" aria-label="Shipping ZIP code">
+                </div>
+              </div>
+            </div>
+          </div>
+          <script>
+          (function(){
+            var key='lla_address_v1',ids=['billStreet','billCity','billState','billZip','shipStreet','shipCity','shipState','shipZip'];
+            var same=document.getElementById('shipSame'),alt=document.getElementById('shipAlt');
+            function read(){var v={};ids.forEach(function(id){v[id]=document.getElementById(id).value.trim();});v.shipSame=same.checked;return v;}
+            function toggle(){alt.hidden=same.checked;}
+            function save(){var text=JSON.stringify(read());try{sessionStorage.setItem(key,text);}catch(e){}try{localStorage.setItem(key,text);}catch(e){}}
+            var old=null;try{old=JSON.parse(sessionStorage.getItem(key)||'null');}catch(e){}
+            if(!old){try{old=JSON.parse(localStorage.getItem(key)||'null');}catch(e){}}
+            if(old){ids.forEach(function(id){if(old[id])document.getElementById(id).value=old[id];});if(typeof old.shipSame==='boolean')same.checked=old.shipSame;}
+            toggle();same.addEventListener('change',function(){toggle();save();});
+            ids.forEach(function(id){document.getElementById(id).addEventListener('input',save);document.getElementById(id).addEventListener('change',save);});
+            window.__llaAddress=function(){var v=read();return {billing:{street:v.billStreet,city:v.billCity,state:v.billState,zip:v.billZip},shipping:v.shipSame?{street:v.billStreet,city:v.billCity,state:v.billState,zip:v.billZip}:{street:v.shipStreet,city:v.shipCity,state:v.shipState,zip:v.shipZip},shipSameAsBilling:v.shipSame};};
+          })();
+          </script>
+          <!-- End CGM address control. Payment integration below remains unchanged. -->
           <div class="f-lbl" id="payLbl">Card or PayPal</div>
           <!-- Airwallex Drop-In mount (real card entry, wired to eTeacher's Airwallex account) -->
           <div id="awx-dropin" style="min-height:220px;border:1px solid #D5DCE6;border-radius:7px;padding:12px;margin-bottom:14px;background:#fff">
