@@ -19,28 +19,28 @@
    if(totalEl){
     totalEl.classList.add('credit-total');totalEl.setAttribute('data-no-promo','');
     if(!$('#offer .credit-rest'))totalEl.insertAdjacentHTML('beforebegin','<div class="credit-rest" data-no-promo></div>');
-    html('#offer .credit-rest','Then <b>$169/month</b> for 4 months');
+    html('#offer .credit-rest','<b>$169/month</b> for 4 months');
     html('#offer .lp-total','<span>$755 total tuition</span>');
     if(!$('#offer .masterclass-credit-strip'))totalEl.insertAdjacentHTML('afterend','<div class="masterclass-credit-strip" data-no-promo><strong>Masterclass credit</strong><div class="credit-codes"><button type="button" data-credit-code="JULIE249">JULIE249</button><button type="button" data-credit-code="MASTERCLASS-VIP">MASTERCLASS-VIP</button></div></div>');
    }
    text('#codeApply','Enroll now');
    all('#offer .lp-lead').forEach(e=>e.remove());
-   all('#faq .faq-item').forEach(e=>{if(/How much does it cost/i.test(e.querySelector('.faq-q')?.textContent||'')){const a=e.querySelector('.faq-a-inner');const t='With JULIE249 or MASTERCLASS-VIP: $79 in month 1, then four monthly payments of $169. Total tuition: $755.';if(a&&a.textContent!==t)a.textContent=t}});
+   all('#faq .faq-item').forEach(e=>{if(/How much does it cost/i.test(e.querySelector('.faq-q')?.textContent||'')){const a=e.querySelector('.faq-a-inner');const t='With JULIE249 or MASTERCLASS-VIP: $79 first month; $169/month for 4 months. Total tuition: $755.';if(a&&a.textContent!==t)a.textContent=t}});
    const benefits=[['18 live classes / once a week','50-minute live Zoom classes with your instructor and small group. Recordings and learning-platform access included.'],['Master 6 longevity pillars','Nutrition, sleep, movement, supplements, stress and your personal protocol. Practical habits for your everyday life.'],['Abbott Lingo CGM included','Glucose sensor and app included in tuition, shipped to your door. See how food affects your glucose.'],['Your personal Blueprint','Leave with a written longevity protocol built around your own numbers, priorities and daily routines.']];
    all('#offer .lp-bul li').forEach((li,i)=>{const span=li.querySelector('span'),item=benefits[i];if(!item){li.remove();return}if(span){const v='<b>'+item[0]+'</b><span class="credit-benefit-detail">'+item[1]+'</span>';if(span.innerHTML!==v)span.innerHTML=v}});
    text('#offer .lp-list h3','Included with your course');
-   html('.att-price','<span class="att-big">$79</span><span class="att-unit">Month 1<br><s>$169</s></span>');
-   html('.att-line','Then 4 monthly payments of $169. <b>$755 total.</b> Masterclass credit applied to month 1.');
+   html('.att-price','<span class="att-big">$79</span><span class="att-unit">first month<br><s>$169</s></span>');
+   html('.att-line','$169/month for 4 months. <b>$755 total.</b> Masterclass credit applied to month 1.');
    text('#enroll-mini .fn-pc-was','Masterclass credit');
-   html('#enroll-mini .lla-mini-price','<b><sup>$</sup>79</b><span>Month 1<br>then 4 × $169 · $755 total</span>');
+   html('#enroll-mini .lla-mini-price','<b><sup>$</sup>79</b><span>first month<br>$169/month for 4 months · $755 total</span>');
    text('#fnExit p b','Regular tuition: $169 per month');
    const strip=$('#mockStrip');
    if(strip){const markup='<span class="t lg">Masterclass credit</span><span class="t sm"><a href="#offer" data-credit-code="JULIE249">JULIE249</a><span>or</span><a href="#offer" data-credit-code="MASTERCLASS-VIP">MASTERCLASS-VIP</a></span><a class="code" href="#offer" data-credit-code="JULIE249">JULIE249</a><a class="code" href="#offer" data-credit-code="MASTERCLASS-VIP">MASTERCLASS-VIP</a>';if(strip.innerHTML!==markup)strip.innerHTML=markup;}
    text('#mockBar .l b','$79 month 1');
    const band=$('#emStep2 .em-band .b-v');
-   if(band){band.setAttribute('data-no-promo','');html('#emStep2 .em-band .b-v',upfront?'$799 <small>USD one payment</small>':(active?'<s style="opacity:.65;margin-right:8px">$169</s>':'')+'$'+first+' <small>Month 1 · then 4 × $169<br>$'+total+' total</small>');}
-   html('#pp [data-pl="monthly"] .pp-price','$'+first+' <small>Month 1</small>');
-   html('#pp [data-pl="monthly"] .pp-sub','Then 4 × $169 · $'+total+' total');
+   if(band){band.setAttribute('data-no-promo','');html('#emStep2 .em-band .b-v',upfront?'$799 <small>USD one payment</small>':(active?'<s style="opacity:.65;margin-right:8px">$169</s>':'')+'$'+first+' <small>first month · $169/month for 4 months<br>$'+total+' total</small>');}
+   html('#pp [data-pl="monthly"] .pp-price','$'+first+' <small>first month</small>');
+   html('#pp [data-pl="monthly"] .pp-sub','$169/month for 4 months · $'+total+' total');
    const sum=$('#emSum');
    if(sum){
     sum.classList.add('credit-summary');sum.setAttribute('data-no-promo','');

@@ -9724,14 +9724,14 @@ html body .att-privacy a{color:#5b6778;text-decoration:underline}
   var inp=document.getElementById('attCodeInput'), btn=document.getElementById('attApply'), msg=document.getElementById('attMsg'), go=document.getElementById('attGo');
   function P(){ return window.LLA_PROMO||null; }
   function setMsg(t,err){ if(!msg) return; msg.textContent=t; msg.className='att-msg'+(err?' err':''); }
-  function reflect(){ var p=P(); if(p&&p.active&&p.code&&inp){ inp.value=p.code; inp.classList.add('ok'); setMsg('Code '+p.code+' applied: $79 in month 1, then four payments of $169, $755 in total.'); if(btn) btn.textContent='Continue to checkout'; } }
+  function reflect(){ var p=P(); if(p&&p.active&&p.code&&inp){ inp.value=p.code; inp.classList.add('ok'); setMsg('Code '+p.code+' applied: $79 first month; $169/month for 4 months. $755 in total.'); if(btn) btn.textContent='Continue to checkout'; } }
   function apply(){
     var p=P(); if(!inp) return; var code=(inp.value||'').trim().toUpperCase().replace(/\s+/g,'');
     if(!code){ setMsg('Type the code from the chat, or the one in your VIP email.', true); inp.focus(); return; }
     if(!p||!p.isValid||!p.isValid(code)){ setMsg('That code isn\u2019t valid. Use the code Courtney shared in the Zoom chat, or the one in your VIP email.', true); inp.classList.remove('ok'); return; }
     try{ p.activate(code); }catch(e){}
     try{ var u=new URL(location.href); u.searchParams.set('code',code); history.replaceState(null,'',u.toString()); }catch(e){}
-    inp.classList.add('ok'); setMsg('Code '+code+' applied: $79 in month 1, then four payments of $169, $755 in total.');
+    inp.classList.add('ok'); setMsg('Code '+code+' applied: $79 first month; $169/month for 4 months. $755 in total.');
     if(btn) btn.textContent='Continue to checkout';
     if(go){ if(window.__llaOpenEnroll) window.__llaOpenEnroll(go); else go.click(); }
   }
@@ -9774,7 +9774,7 @@ html body .att-privacy a{color:#5b6778;text-decoration:underline}
 <script src="../attendee-form.js?v=november-20261114"></script>
 <script src="../guest-mobile.js?v=20261027-mobile5"></script>
 <link rel="stylesheet" href="../attendee-pricing.css?v=compact1">
-<script src="../attendee-pricing.js?v=slider1" defer></script>
+<script src="../attendee-pricing.js?v=homepage-wording-20261114" defer></script>
 <link rel="stylesheet" href="../launch-flow.css?v=hero5">
 <script src="../launch-flow.js?v=slider2" defer></script>
   <!-- Global Floating Enroll CTA -->
@@ -9844,7 +9844,7 @@ html body .att-privacy a{color:#5b6778;text-decoration:underline}
       .lla-float-cta .lla-cta-pill .mo{font-size:10px}
     }
   </style>
-  <a href="#enrollModal" data-enroll-course="1" class="lla-float-cta is-visible" id="attendeeFloatCta" aria-label="Enroll Now in The Longevity Blueprint, $79 first month, then four payments of $169">
+  <a href="#enrollModal" data-enroll-course="1" class="lla-float-cta is-visible" id="attendeeFloatCta" aria-label="Enroll Now in The Longevity Blueprint, $79 first month; $169/month for 4 months.">
     <span class="lla-cta-text">
       <span class="lla-cta-eyebrow">Enroll Now</span>
       <span class="lla-cta-title">The Longevity Blueprint</span>
